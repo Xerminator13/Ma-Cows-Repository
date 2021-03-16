@@ -2,6 +2,7 @@ package com.example.macows;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,11 +22,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static ArrayList<Player> playerList  = new ArrayList<Player>();
     private static ArrayList<EconomyPlayer> econPlayerList = new ArrayList<EconomyPlayer>();
-
     //For using shared preferences >>
     //  https://www.journaldev.com/9412/android-shared-preferences-example-tutorial
-    private SharedPreferences prefs = getApplicationContext().getSharedPreferences("MyPrefs", 0);// 0 is for private mode
-    private SharedPreferences.Editor editor = prefs.edit();
+    private static Context mContext;
+    private SharedPreferences prefs;
+    private SharedPreferences.Editor editor;
 
     //The tutorial that I am watching said it is good to have a tag in the class for logging
     private static final String TAG = "MainActivity";
@@ -75,18 +76,84 @@ public class MainActivity extends AppCompatActivity {
         return allHighScores + "\nTotal number of Lines was: " + numLines;
 
     }
-    /*
-    * Ya so this is not working at all and is complete garbage.  I need to fix it later
-    * The issue is that I have no starting data in the file initially and so it is confused on how to write to the file
-    * I am as confused as the program is... However, I am getting some results, which is good.
-     */
     private static void addNewOrgHighScore(Player player, File file) throws IOException {
 
+
+    }
+    private void updateAllPlayerPreferences() {
+        int a = 1;
+
+        for (Player p : playerList) {
+            editor.putInt("p" + a + "InField", p.getCowsInField());
+            editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
+            editor.putInt("p" + a + "Zombies", p.getZombieCows());
+            editor.putInt("p" + a + "NumKilled", p.getNumCowsKilled());
+            editor.putInt("p" + a + "NumLost", p.getNumCowsLost());
+            editor.putInt("p" + a + "NumGained", p.getNumCowsGained());
+            editor.putInt("p" + a + "ZombiesGained", p.getNumZombieCowsGained());
+
+            a++;
+
+        }
+
+        editor.commit();
+
+    }
+    private void updatePlayerPrefs(Player p) {
+        int a = playerList.indexOf(p) - 1;
+        editor.putInt("p" + a + "InField", p.getCowsInField());
+        editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
+        editor.putInt("p" + a + "Zombies", p.getZombieCows());
+        editor.putInt("p" + a + "NumKilled", p.getNumCowsKilled());
+        editor.putInt("p" + a + "NumLost", p.getNumCowsLost());
+        editor.putInt("p" + a + "NumGained", p.getNumCowsGained());
+        editor.putInt("p" + a + "ZombiesGained", p.getNumZombieCowsGained());
+
+        editor.commit();
+
+    }
+    private String formatPlayerPrefs(Player p) {
+        String formattedString = "";
+
+        int a = playerList.indexOf(p) - 1;
+        formattedString += "Cows in field: " + prefs.getInt("p" + a + "InField", 0);
+        formattedString += "\nCows in barn: " + prefs.getInt("p" + a + "InBarn", 0);
+        formattedString += "\nZombie Cows: " + prefs.getInt("p" + a + "Zombies", 0);
+        formattedString += "\nNumber of cows this player killed: " + prefs.getInt("p" + a + "NumKilled", 0);
+        formattedString += "\nNumber of cows this player has lost: " + prefs.getInt("p" + a + "NumLost", 0);
+        formattedString += "\nNumber of cows this player has gained: " + prefs.getInt("p" + a + "NumGained", 0);
+        formattedString += "\nNumber of zombie cows this player has gained: " + prefs.getInt("p" + a + "ZombiesGained", 0);
+
+        return formattedString;
+
+    }
+    private void removeAllSavedData() {
+        int a = 1;
+
+        for (Player p : playerList) {
+            editor.remove("p" + a + "InField");
+            editor.remove("p" + a + "InBarn");
+            editor.remove("p" + a + "Zombies");
+            editor.remove("p" + a + "NumKilled");
+            editor.remove("p" + a + "NumLost");
+            editor.remove("p" + a + "NumGained");
+            editor.remove("p" + a + "ZombiesGained");
+
+            a++;
+
+        }
+
+        editor.commit();
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mContext = getApplicationContext();
+        prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
+        editor = prefs.edit();
+
+        /*
         //Writes a .txt file for saving information to device memory such as:
         //  High scores, past player names, and other data.
         File container = new File(MainActivity.this.getFilesDir(), "text");
@@ -105,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         Log.d(FLAG, highScores.getAbsolutePath());
-
+*/
         //------------------------------------------------------------------------------------------
 
         super.onCreate(savedInstanceState);
@@ -117,26 +184,14 @@ public class MainActivity extends AppCompatActivity {
         //Testing player methods
         initPlayers();
 
-        try {
-            for (int a = 0; a < playerList.size(); a++) {
-                playerList.get(a).addCowsToField((int)(1090901*Math.random()));
-                addNewOrgHighScore(playerList.get(a), highScores);
+        for (int a = 0; a < playerList.size(); a++) {
+            playerList.get(a).addCowsToField((int)(1090901*Math.random()));
+            updatePlayerPrefs(playerList.get(a));
 
-            }
-
-            Log.d(TEST, "Succeeded to add");
-        } catch (IOException e) {
-            Log.d(TEST, "Failed to add");
         }
 
-        try {
-            displayText = findViewById(R.id.textView);
-            displayText.setText(getAllHighScores(highScores));
-
-            Log.d(TEST, "Succeeded to read");
-        } catch (IOException e) {
-            Log.d(TEST, "Failed to read");
-        }
+        displayText = findViewById(R.id.textView);
+        displayText.setText(formatPlayerPrefs(playerList.get(0)));
 /*
         //scoreEntry = findViewById(R.id.insert_id_here);
         scoreEntry.setOnClickListener(new View.OnClickListener() {
