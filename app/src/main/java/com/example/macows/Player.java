@@ -1,5 +1,6 @@
 package com.example.macows;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
 import android.renderscript.ScriptGroup;
@@ -7,11 +8,13 @@ import android.renderscript.ScriptGroup;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.util.Random;
 import java.util.ArrayList;
+import android.content.Context;
 
 public class Player {
     private static Random rand = new Random();
@@ -32,6 +35,10 @@ public class Player {
     }
 
     //Getter methods
+    public String getName() {
+        return name;
+
+    }
     public int getCowsInField() {
         return cowsInField;
 
@@ -58,15 +65,6 @@ public class Player {
     }
     public int getNumZombieCowsGained() {
         return numZombieCowsGained;
-
-    }
-    //For some reason I cannot find the text file I am trying to write to
-    //You cannot put it in R.raw because you can only read from that and NOT write
-    //I have not found anything as of yet where tp [ut the file to let it be read
-    //For now, this will stay empty and be a method that I need to fill later on
-    public String getHighScore() throws IOException {
-        //TODO Get and Set high scores for players;  Reading and Writing to text file
-        return "";
 
     }
 
