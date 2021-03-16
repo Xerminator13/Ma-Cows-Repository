@@ -1,8 +1,17 @@
 package com.example.macows;
 
+import android.content.res.Resources;
+import android.os.Environment;
+import android.renderscript.ScriptGroup;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
 import java.util.Random;
-
-
+import java.util.ArrayList;
 
 public class Player {
     private static Random rand = new Random();
@@ -51,6 +60,15 @@ public class Player {
         return numZombieCowsGained;
 
     }
+    //For some reason I cannot find the text file I am trying to write to
+    //You cannot put it in R.raw because you can only read from that and NOT write
+    //I have not found anything as of yet where tp [ut the file to let it be read
+    //For now, this will stay empty and be a method that I need to fill later on
+    public String getHighScore() throws IOException {
+        //TODO Get and Set high scores for players;  Reading and Writing to text file
+        return "";
+
+    }
 
     //Setter methods
     public void addCowsToField(int numCows) {
@@ -94,16 +112,10 @@ public class Player {
         this.cowsInField = (int)(cowsInField*1.5);
 
     }
-    //Each cow in field has 50% chance of producing another cow
+    //Random percentage of current cows in field is added to the cows in the field as additional cows
     public void sawSchool() {
-        for (int a = 0; a < this.cowsInField; a++) {
-            if (rand.nextInt(10) > 5) {
-                this.cowsInField++;
-                this.numCowsGained++;
-
-            }
-
-        }
+       double percentage = Math.random();
+       this.cowsInField +=(int)(this.cowsInField*(1 + percentage));
 
     }
     /*

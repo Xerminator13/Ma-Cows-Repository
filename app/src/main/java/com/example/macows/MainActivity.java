@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
     //The tutorial that I am watching said it is good to have a tag in the class for logging
     private static final String TAG = "MainActivity";
+    private static final String FLAG = "HighScore";
     private static boolean isEconMode = false;
 
     /*
@@ -23,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     *       one image, however this means that I need to have all of this stuff implemented in code.
      */
 
+    //This method is attached to the "Play normal mode" button
     private static void initPlayers() {
         for (int a = 0; a < 6; a++) {
             playerList.add(new Player("Player " + (a + 1)));
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+    //This method is attached to the "Play economy mode" button
     private static void initEconPlayers() {
         for (int a = 0; a < 6; a++) {
             econPlayerList.add(new EconomyPlayer("Player " + (a + 1)));
@@ -43,15 +49,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started!");
-
-        if (isEconMode) {
-            initEconPlayers();
-
-        }
-        else {
-            initPlayers();
-
-        }
 
     }
 }
