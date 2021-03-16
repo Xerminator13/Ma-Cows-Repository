@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageView;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private static ArrayList<Player> playerList  = new ArrayList<Player>();
+    private static ArrayList<EconomyPlayer> econPlayerList = new ArrayList<EconomyPlayer>();
+
     //The tutorial that I am watching said it is good to have a tag in the class for logging
     private static final String TAG = "MainActivity";
+    private static boolean isEconMode = false;
 
     /*
     *  It is very important to me that I have a dark mode option for this application.
@@ -19,11 +23,35 @@ public class MainActivity extends AppCompatActivity {
     *       one image, however this means that I need to have all of this stuff implemented in code.
      */
 
+    private static void initPlayers() {
+        for (int a = 0; a < 6; a++) {
+            playerList.add(new Player("Player " + (a + 1)));
+
+        }
+
+    }
+    private static void initEconPlayers() {
+        for (int a = 0; a < 6; a++) {
+            econPlayerList.add(new EconomyPlayer("Player " + (a + 1)));
+
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started!");
+
+        if (isEconMode) {
+            initEconPlayers();
+
+        }
+        else {
+            initPlayers();
+
+        }
 
     }
 }

@@ -2,16 +2,13 @@ package com.example.macows;
 
 import java.util.Random;
 
-//Add setter methods for numCowsLost through totalFundsLost
-//Properly implement math logic for Police descore
-//Implement all other descore methods up to economy mode (Those TBD)
+
 
 public class Player {
     private static Random rand = new Random();
 
     private String name;
-    private int cowsInField, cowsInBarn, zombieCows, numCowsKilled, numCowsLost, numCowsGained;
-    private double currentFunds, totalFundsGained, totalFundsLost;
+    private int cowsInField, cowsInBarn, zombieCows, numCowsKilled, numCowsLost, numCowsGained, numZombieCowsGained;
 
     public Player(String a) {
         name = a;
@@ -21,10 +18,7 @@ public class Player {
         numCowsKilled = 0;
         numCowsLost = 0;
         numCowsGained = 0;
-
-        currentFunds = 0;
-        totalFundsGained = 0;
-        totalFundsLost = 0;
+        numZombieCowsGained = 0;
 
     }
 
@@ -41,10 +35,27 @@ public class Player {
         return zombieCows;
 
     }
+    public int getNumCowsKilled() {
+        return numCowsKilled;
+
+    }
+    public int getNumCowsLost() {
+        return numCowsLost;
+
+    }
+    public int getNumCowsGained() {
+        return numCowsGained;
+
+    }
+    public int getNumZombieCowsGained() {
+        return numZombieCowsGained;
+
+    }
 
     //Setter methods
     public void addCowsToField(int numCows) {
         this.cowsInField += numCows;
+        this.numCowsGained += numCows;
 
     }
     public void takeCowsFromField(int numCows) {
@@ -52,6 +63,14 @@ public class Player {
 
     }
     public void setCowsInField(int numCows) {
+        if (numCows < this.cowsInField) {
+            this.numCowsLost += (this.cowsInField - numCows);
+
+        }
+        else {
+            this.numCowsGained += (numCows - this.cowsInField);
+
+        }
         this.cowsInField = numCows;
 
     }
@@ -59,13 +78,19 @@ public class Player {
         this.numCowsKilled += numCows;
 
     }
+    public void addNumCowsLost(int numCows) {
+        this.numCowsLost += numCows;
+
+    }
 
     //Scoring methods
     public void sawChurch() {
+        this.numCowsGained += this.cowsInField;
         this.cowsInField *= 2;
 
     }
     public void sawHostpital() {
+        this.numCowsGained = (int)(this.cowsInField*1.5) - this.cowsInField;
         this.cowsInField = (int)(cowsInField*1.5);
 
     }
@@ -74,6 +99,7 @@ public class Player {
         for (int a = 0; a < this.cowsInField; a++) {
             if (rand.nextInt(10) > 5) {
                 this.cowsInField++;
+                this.numCowsGained++;
 
             }
 
@@ -86,6 +112,7 @@ public class Player {
     public void ressurectZombieCows() {
         if (this.cowsInField == 0 && this.cowsInBarn == 0) {
             this.cowsInField = 25;
+            this.numCowsGained += 25;
             this.zombieCows = 0;
 
         }
@@ -93,6 +120,7 @@ public class Player {
     }
     public void sawRoadKill() {
         if (this.zombieCows == 0) {
+            this.numZombieCowsGained += 25;
             this.zombieCows = 25;
 
         }
@@ -136,26 +164,36 @@ public class Player {
     This will only steal 75% of a players cows up to 20 cows.
      */
     public void sawPolice(Player other) {
-        int numCows = (int)(other.getCowsInField());
+        int numCows = (int)(other.getCowsInField()*0.75);
         if (numCows > 20) {
             numCows = 20;
 
         }
 
         this.cowsInField += numCows;
-        other.cowsInField -= numCows;
+        this.numCowsGained += numCows;
+        other.takeCowsFromField(numCows);
+        other.addNumCowsLost(numCows);
 
     }
     public void sawCemetary(Player other) {
+        other.addNumCowsLost(other.getCowsInField());
         other.setCowsInField(0);
 
     }
     public void sawFastFood(Player other) {
+        other.addNumCowsLost(2);
         other.takeCowsFromField(2);
 
     }
     public void sawStockTrailer(Player other) {
+        other.addNumCowsLost(10);
         other.takeCowsFromField(10);
+
+    }
+    public void sawFuneralHome(Player other) {
+        other.addNumCowsLost((int)(other.getCowsInField()/2.0));
+        other.takeCowsFromField((int)(other.getCowsInField()/2.0));
 
     }
 
