@@ -2,7 +2,7 @@ package com.example.macows;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,19 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Button saveScore, searchScore;
@@ -31,8 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     private static ArrayList<Player> playerList  = new ArrayList<Player>();
     private static ArrayList<EconomyPlayer> econPlayerList = new ArrayList<EconomyPlayer>();
-    private static ArrayList<String> rawScoresList = new ArrayList<String>();
-    private static PrintWriter writer;
+
+    //For using shared preferences >>
+    //  https://www.journaldev.com/9412/android-shared-preferences-example-tutorial
+    private SharedPreferences prefs = getApplicationContext().getSharedPreferences("MyPrefs", 0);// 0 is for private mode
+    private SharedPreferences.Editor editor = prefs.edit();
 
     //The tutorial that I am watching said it is good to have a tag in the class for logging
     private static final String TAG = "MainActivity";
@@ -58,22 +51,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //This method is attached to the "Play normal mode" button
-    private static void initPlayers(File file) throws IOException {
-        String initialState = "";
-
-        FileWriter fWriter = new FileWriter(file, false);
-        BufferedWriter bw = new BufferedWriter(fWriter);
-
+    //I need to save the following data:  Highest score, player name
+    private static void initPlayers() {
         for (int a = 0; a < 6; a++) {
             playerList.add(new Player("Player " + (a + 1)));
-            bw.write(playerList.get(a).getName() + ": " + playerList.get(a).getCowsInField() + " cows");
-            //bw.newLine();
 
         }
-        bw.close();
 
     }
     //This method is attached to the "Play economy mode" button
+    //I need to save the following data:  Highest score, player name, most funds
     private static void initEconPlayers() {
         for (int a = 0; a < 6; a++) {
             econPlayerList.add(new EconomyPlayer("Player " + (a + 1)));
@@ -85,16 +72,6 @@ public class MainActivity extends AppCompatActivity {
         String allHighScores = "";
         int numLines = 0;
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        String line;
-        for (int a = 0; a < playerList.size(); a++) {
-            line = br.readLine();
-            allHighScores += line + "\n";
-            numLines++;
-
-        }
-        br.close();
-
         return allHighScores + "\nTotal number of Lines was: " + numLines;
 
     }
@@ -104,29 +81,7 @@ public class MainActivity extends AppCompatActivity {
     * I am as confused as the program is... However, I am getting some results, which is good.
      */
     private static void addNewOrgHighScore(Player player, File file) throws IOException {
-        String name = player.getName() + ": " + player.getCowsInField() + " cows";
 
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        StringBuffer inputBuffer = new StringBuffer();
-        int numLines = 0;
-        String line;
-
-        for (int a = 0; a < 10; a++) {
-            line = br.readLine();
-
-            if (line == null) {
-                inputBuffer.append(name);
-                inputBuffer.append('\n');
-                break;
-
-            }
-
-        }
-        br.close();
-
-        FileOutputStream fOut = new FileOutputStream(file);
-        fOut.write(inputBuffer.toString().getBytes());
-        fOut.close();
 
     }
 
@@ -140,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             container.mkdir();
 
         }
-        File highScores = new File(container, "high_scores");
+        File highScores = new File(container, file);
         if (!highScores.exists()) {
             try {
                 highScores.createNewFile();
@@ -151,17 +106,16 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.d(FLAG, highScores.getAbsolutePath());
 
+        //------------------------------------------------------------------------------------------
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d(TAG, "onCreate: started!");
 
+        //------------------------------------------------------------------------------------------
+
         //Testing player methods
-        //We are reading an writing!! Just not how I want to...
-        try {
-            initPlayers(highScores);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        initPlayers();
 
         try {
             for (int a = 0; a < playerList.size(); a++) {

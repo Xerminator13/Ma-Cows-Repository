@@ -12,25 +12,30 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.util.Hashtable;
 import java.util.Random;
 import java.util.ArrayList;
 import android.content.Context;
 
 public class Player {
-    private static Random rand = new Random();
+    private Hashtable<String, Integer> playerDict;
 
     private String name;
     private int cowsInField, cowsInBarn, zombieCows, numCowsKilled, numCowsLost, numCowsGained, numZombieCowsGained;
 
     public Player(String a) {
         name = a;
-        cowsInField = 0;
-        cowsInBarn = 0;
-        zombieCows = 0;
-        numCowsKilled = 0;
-        numCowsLost = 0;
-        numCowsGained = 0;
-        numZombieCowsGained = 0;
+
+        playerDict = new Hashtable<String, Integer>();
+        playerDict.put("inField", 0);
+        playerDict.put("inBarn", 0);
+        playerDict.put("zombies", 0);
+        playerDict.put("numKilled", 0);
+        playerDict.put("numLost", 0);
+        playerDict.put("numGained", 0);
+        playerDict.put("zombiesGained", 0);
+
+        syncVarsWithDict();
 
     }
 
@@ -96,6 +101,26 @@ public class Player {
     }
     public void addNumCowsLost(int numCows) {
         this.numCowsLost += numCows;
+
+    }
+    public void syncDictWithVars() {
+        this.playerDict.put("inField", cowsInField);
+        this.playerDict.put("inBarn", cowsInBarn);
+        this.playerDict.put("zombies", zombieCows);
+        this.playerDict.put("numKilled", numCowsKilled);
+        this.playerDict.put("numLost", numCowsLost);
+        this.playerDict.put("numGained", numCowsGained);
+        this.playerDict.put("zombiesGained", numZombieCowsGained);
+
+    }
+    public void syncVarsWithDict() {
+        cowsInField = this.playerDict.get("inField");
+        cowsInBarn = this.playerDict.get("inBarn");
+        zombieCows = this.playerDict.get("zombies");
+        numCowsKilled = this.playerDict.get("numKilled");
+        numCowsLost = this.playerDict.get("numLost");
+        numCowsGained = this.playerDict.get("numGained");
+        numZombieCowsGained = this.playerDict.get("zombiesGained");
 
     }
 
