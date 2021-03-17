@@ -80,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    //**********************************************************************************************
+    //These methods are how I save data
+
     private void updateAllPlayerPreferences() {
         int a = 1;
 
@@ -112,10 +116,26 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
 
     }
-    private String formatPlayerPrefs(Player p) {
+    private void reInitPlayers() {
+        int a = 1;
+
+        for (Player p : playerList) {
+            p.setCowsInField(prefs.getInt("p" + a + "InField", 0));
+            p.setCowsInBarn(prefs.getInt("p" + a + "InBarn", 0));
+            p.setZombieCows(prefs.getInt("p" + a + "Zombies", 0));
+            p.setNumCowsKilled(prefs.getInt("p" + a + "NumKilled", 0));
+            p.setNumCowsLost(prefs.getInt("p" + a + "NumLost", 0));
+            p.setNumCowsGained(prefs.getInt("p" + a + "NumGained", 0));
+            p.setNumZombieCowsGained(prefs.getInt("p" + a + "ZombiesGained", 0));
+
+            a++;
+
+        }
+
+    }
+    private String formatPlayerPrefs(int a) {
         String formattedString = "";
 
-        int a = playerList.indexOf(p) - 1;
         formattedString += "Cows in field: " + prefs.getInt("p" + a + "InField", 0);
         formattedString += "\nCows in barn: " + prefs.getInt("p" + a + "InBarn", 0);
         formattedString += "\nZombie Cows: " + prefs.getInt("p" + a + "Zombies", 0);
@@ -143,6 +163,14 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        editor.remove("savedData");
+        editor.remove("player1");
+        editor.remove("player2");
+        editor.remove("player3");
+        editor.remove("player4");
+        editor.remove("player5");
+        editor.remove("player6");
+
         editor.commit();
 
     }
@@ -153,45 +181,42 @@ public class MainActivity extends AppCompatActivity {
         prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
         editor = prefs.edit();
 
-        /*
-        //Writes a .txt file for saving information to device memory such as:
-        //  High scores, past player names, and other data.
-        File container = new File(MainActivity.this.getFilesDir(), "text");
-        Log.d(FLAG, MainActivity.this.getFilesDir().toString());
-        if (!container.exists()) {
-            container.mkdir();
+        boolean createdOnce = prefs.getBoolean("savedData", false);
+        if (createdOnce) {
+            reInitPlayers();
 
         }
-        File highScores = new File(container, file);
-        if (!highScores.exists()) {
-            try {
-                highScores.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-        Log.d(FLAG, highScores.getAbsolutePath());
-*/
         //------------------------------------------------------------------------------------------
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "onCreate: started!");
+        Log.d(TAG,"onCreate: started!");
 
         //------------------------------------------------------------------------------------------
 
         //Testing player methods
-        initPlayers();
+        displayText = findViewById(R.id.textView);
 
-        for (int a = 0; a < playerList.size(); a++) {
-            playerList.get(a).addCowsToField((int)(1090901*Math.random()));
-            updatePlayerPrefs(playerList.get(a));
+        //Call stuff that initiatlizes with the app and should only run once in here
+        if (!createdOnce) {
+            editor.putBoolean("savedData", true);
+            editor.putInt("player1", 1);
+            editor.putInt("player2", 2);
+            editor.putInt("player3", 3);
+            editor.putInt("player4", 4);
+            editor.putInt("player5", 5);
+            editor.putInt("player6", 6);
+            initPlayers();
+
+            for (int a = 0; a < playerList.size(); a++) {
+                playerList.get(a).addCowsToField((int)(1090901*Math.random()));
+                updatePlayerPrefs(playerList.get(a));
+
+            }
 
         }
 
-        displayText = findViewById(R.id.textView);
-        displayText.setText(formatPlayerPrefs(playerList.get(0)));
+        displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
 /*
         //scoreEntry = findViewById(R.id.insert_id_here);
         scoreEntry.setOnClickListener(new View.OnClickListener() {

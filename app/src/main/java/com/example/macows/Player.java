@@ -56,15 +56,6 @@ public class Player {
     }
 
     //Setter methods
-    public void addCowsToField(int numCows) {
-        this.cowsInField += numCows;
-        this.numCowsGained += numCows;
-
-    }
-    public void takeCowsFromField(int numCows) {
-        this.cowsInField -= numCows;
-
-    }
     public void setCowsInField(int numCows) {
         if (numCows < this.cowsInField) {
             this.numCowsLost += (this.cowsInField - numCows);
@@ -77,12 +68,51 @@ public class Player {
         this.cowsInField = numCows;
 
     }
+    public void setCowsInBarn(int numCows) {
+        this.cowsInBarn = numCows;
+
+    }
+    public void setZombieCows(int numCows) {
+        this.zombieCows = numCows;
+
+    }
+    public void setNumCowsKilled(int numCows) {
+        this.numCowsKilled = numCows;
+
+    }
+    public void setNumCowsLost(int numCows) {
+        this.numCowsLost = numCows;
+
+    }
+    public void setNumCowsGained(int numCows) {
+        this.numCowsGained = numCows;
+
+    }
+    public void setNumZombieCowsGained(int numCows) {
+        this.numZombieCowsGained = numCows;
+
+    }
+
+    //Additive / Subtractive Methods
+    public void addCowsToField(int numCows) {
+        this.cowsInField += numCows;
+        this.numCowsGained += numCows;
+
+    }
+    public void takeCowsFromField(int numCows) {
+        this.cowsInField -= numCows;
+
+    }
     public void addNumCowsKilled(int numCows) {
         this.numCowsKilled += numCows;
 
     }
     public void addNumCowsLost(int numCows) {
         this.numCowsLost += numCows;
+
+    }
+    public void addNumZombieCowsGained(int numCows) {
+        this.numZombieCowsGained += numCows;
 
     }
 
