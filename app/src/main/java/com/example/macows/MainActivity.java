@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button saveScore, resetScores;
+    private Button reInitPlayers, resetScores, populate;
     private EditText scoreEntry;
     private TextView displayText;
 
@@ -55,7 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
     //This method is attached to the "Play normal mode" button
     //I need to save the following data:  Highest score, player name
-    private static void initPlayers() {
+    private void initPlayers(boolean isNewOnCreate) {
+        if (isNewOnCreate) {
+            editor.putInt("player1", 1);
+            editor.putInt("player2", 2);
+            editor.putInt("player3", 3);
+            editor.putInt("player4", 4);
+            editor.putInt("player5", 5);
+            editor.putInt("player6", 6);
+
+            editor.commit();
+
+        }
+
         for (int a = 0; a < 6; a++) {
             playerList.add(new Player("Player " + (a + 1)));
 
@@ -73,21 +85,21 @@ public class MainActivity extends AppCompatActivity {
     }
     public void runInitSetup() {
         editor.putBoolean("savedData", true);
-        editor.putInt("player1", 1);
-        editor.putInt("player2", 2);
-        editor.putInt("player3", 3);
-        editor.putInt("player4", 4);
-        editor.putInt("player5", 5);
-        editor.putInt("player6", 6);
 
         editor.commit();
-        initPlayers();
+        initPlayers(true);
 
-        for (int a = 0; a < playerList.size(); a++) {
-            playerList.get(a).addCowsToField((int)(1090901*Math.random()));
-            updatePlayerPrefs(playerList.get(a), a);
+    }
+    /*
+    * Meant to run every other time the app is opened besides the first
+     */
+    private void reInitPlayers(boolean isNewOnCreate) {
+        if (isNewOnCreate) {
+            initPlayers(false);
 
         }
+
+        setAllPlayerVarsToPrefs();
 
     }
 
@@ -115,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void updatePlayerPrefs(Player p, int index) {
         int a = index + 1;
+
         editor.putInt("p" + a + "InField", p.getCowsInField());
         editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
         editor.putInt("p" + a + "Zombies", p.getZombieCows());
@@ -155,23 +168,6 @@ public class MainActivity extends AppCompatActivity {
         p.setNumZombieCowsGained(prefs.getInt("p" + a + "ZombiesGained", 0));
 
     }
-    private void reInitPlayers() {
-        int a = 1;
-
-        for (Player p : playerList) {
-            p.setCowsInField(prefs.getInt("p" + a + "InField", 0));
-            p.setCowsInBarn(prefs.getInt("p" + a + "InBarn", 0));
-            p.setZombieCows(prefs.getInt("p" + a + "Zombies", 0));
-            p.setNumCowsKilled(prefs.getInt("p" + a + "NumKilled", 0));
-            p.setNumCowsLost(prefs.getInt("p" + a + "NumLost", 0));
-            p.setNumCowsGained(prefs.getInt("p" + a + "NumGained", 0));
-            p.setNumZombieCowsGained(prefs.getInt("p" + a + "ZombiesGained", 0));
-
-            a++;
-
-        }
-
-    }
     private String formatPlayerPrefs(int a) {
         String formattedString = "";
 
@@ -208,6 +204,8 @@ public class MainActivity extends AppCompatActivity {
 
         editor.commit();
 
+        playerList.clear();
+
     }
 
     //**********************************************************************************************
@@ -226,11 +224,11 @@ public class MainActivity extends AppCompatActivity {
 
         boolean createdOnce = prefs.getBoolean("savedData", false);
         if (createdOnce) {
-            reInitPlayers();
+            reInitPlayers(true);
 
         }
         //Call stuff that initializes with the app and should only run once in here
-        if (!createdOnce) {
+        else {
             runInitSetup();
 
         }
@@ -241,15 +239,48 @@ public class MainActivity extends AppCompatActivity {
         displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
 
         resetScores = findViewById(R.id.resetScores);
+        reInitPlayers = findViewById(R.id.reInitButton);
+        populate = findViewById(R.id.populatePlayers);
+
+        populate.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                playerList.get(0).setCowsInField(19109);
+                playerList.get(0).setCowsInBarn(767400);
+                playerList.get(0).setZombieCows(25);
+                playerList.get(0).setNumCowsLost(87864);
+
+                updatePlayerPrefs(playerList.get(0), 0);
+
+                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));79
+
+            }
+
+        });
         resetScores.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //This is formatting listeners for later
                 //scores = scoreEntry.getText().toString();
                 System.out.println("Button pressed");
 
+                //Deletes all preferences and player objects
                 removeAllSavedData();
-                setPlayerVarsToPrefs(playerList.get(0), 0);
-                reInitPlayers();
+                //Need to create new references and player objects
+                initPlayers(true);
+                //Creates necessary prefs for one player
+                updatePlayerPrefs(playerList.get(0), 0);
+                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
+
+            }
+
+        });
+        reInitPlayers.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("Button init pressed");
+
+                playerList.get(0).setCowsInField(19090);
+                updatePlayerPrefs(playerList.get(0), 0);
+
+                reInitPlayers(false);
                 displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
 
             }
