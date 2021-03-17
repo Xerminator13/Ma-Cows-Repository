@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private Button saveScore, searchScore;
+    private Button saveScore, resetScores;
     private EditText scoreEntry;
     private TextView displayText;
 
@@ -175,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //**********************************************************************************************
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mContext = getApplicationContext();
@@ -219,25 +221,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
-/*
-        //scoreEntry = findViewById(R.id.insert_id_here);
-        scoreEntry.setOnClickListener(new View.OnClickListener() {
+
+        resetScores = findViewById(R.id.resetScores);
+        resetScores.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //This is formatting listeners for later
                 //scores = scoreEntry.getText().toString();
-                try {
-                    Player.getAllHighScores(classContext);
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-
-                }
+                removeAllSavedData();
+                updatePlayerPrefs(playerList.get(0));
+                reInitPlayers();
+                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
 
             }
 
         });
-
- */
 
     }
 }
