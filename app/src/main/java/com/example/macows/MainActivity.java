@@ -206,6 +206,8 @@ public class MainActivity extends AppCompatActivity {
             editor.putInt("player4", 4);
             editor.putInt("player5", 5);
             editor.putInt("player6", 6);
+
+            editor.commit();
             initPlayers();
 
             for (int a = 0; a < playerList.size(); a++) {
