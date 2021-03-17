@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
 
                 updatePlayerPrefs(playerList.get(0), 0);
 
-                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));79
+                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
 
             }
 
