@@ -56,6 +56,10 @@ public class Player {
     }
 
     //Setter methods
+    public void setPlayerName(String a) {
+        this.name = a;
+
+    }
     public void setCowsInField(int numCows) {
         if (numCows < this.cowsInField) {
             this.numCowsLost += (this.cowsInField - numCows);

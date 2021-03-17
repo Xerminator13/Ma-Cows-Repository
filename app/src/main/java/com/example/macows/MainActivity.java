@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public Player getPlayerFromList(int index) {
+        return playerList.get(index);
+
+    }
+
     //**********************************************************************************************
 
     //This method is attached to the "Play normal mode" button
@@ -110,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         int a = 1;
 
         for (Player p : playerList) {
+            editor.putString("p" + a + "Name", p.getName());
             editor.putInt("p" + a + "InField", p.getCowsInField());
             editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
             editor.putInt("p" + a + "Zombies", p.getZombieCows());
@@ -128,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
     private void updatePlayerPrefs(Player p, int index) {
         int a = index + 1;
 
+        editor.putString("p" + a + "Name", p.getName());
         editor.putInt("p" + a + "InField", p.getCowsInField());
         editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
         editor.putInt("p" + a + "Zombies", p.getZombieCows());
@@ -143,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         int a = 1;
 
         for (Player p : playerList) {
+            p.setPlayerName(prefs.getString("p" + a + "Name", "Player" + a));
             p.setCowsInField(prefs.getInt("p" + a + "InField", 0));
             p.setCowsInBarn(prefs.getInt("p" + a + "InBarn", 0));
             p.setZombieCows(prefs.getInt("p" + a + "Zombies", 0));
@@ -159,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
     private void setPlayerVarsToPrefs(Player p, int index) {
         int a = index + 1;
 
+        p.setPlayerName(prefs.getString("p" + a + "Name", "Player" + a));
         p.setCowsInField(prefs.getInt("p" + a + "InField", 0));
         p.setCowsInBarn(prefs.getInt("p" + a + "InBarn", 0));
         p.setZombieCows(prefs.getInt("p" + a + "Zombies", 0));
@@ -171,6 +180,7 @@ public class MainActivity extends AppCompatActivity {
     private String formatPlayerPrefs(int a) {
         String formattedString = "";
 
+        formattedString += "Player Name: " + prefs.getString("p" + a + "Name", "Player" + a);
         formattedString += "Cows in field: " + prefs.getInt("p" + a + "InField", 0);
         formattedString += "\nCows in barn: " + prefs.getInt("p" + a + "InBarn", 0);
         formattedString += "\nZombie Cows: " + prefs.getInt("p" + a + "Zombies", 0);
@@ -184,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void removeAllSavedData() {
         for (int a = 1; a < playerList.size() + 1; a++) {
+            editor.remove("p" + a + "Name");
             editor.remove("p" + a + "InField");
             editor.remove("p" + a + "InBarn");
             editor.remove("p" + a + "Zombies");
@@ -236,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
 
         displayText = findViewById(R.id.textView);
-        displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
+        displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
 
         resetScores = findViewById(R.id.resetScores);
         reInitPlayers = findViewById(R.id.reInitButton);
@@ -251,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
                 updatePlayerPrefs(playerList.get(0), 0);
 
-                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
+                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
 
             }
 
@@ -268,7 +279,7 @@ public class MainActivity extends AppCompatActivity {
                 initPlayers(true);
                 //Creates necessary prefs for one player
                 updatePlayerPrefs(playerList.get(0), 0);
-                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
+                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
 
             }
 
@@ -281,7 +292,7 @@ public class MainActivity extends AppCompatActivity {
                 updatePlayerPrefs(playerList.get(0), 0);
 
                 reInitPlayers(false);
-                displayText.setText(playerList.get(0).getName() + "\n" + formatPlayerPrefs(prefs.getInt("player1", 1)));
+                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
 
             }
 
