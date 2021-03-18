@@ -19,6 +19,18 @@ public class MainMenu extends AppCompatActivity {
 
     //**********************************************************************************************
 
+    private void populateTextEntries() {
+        name1.setText(CommonUtils.playerList.get(0).getName());
+        name2.setText(CommonUtils.playerList.get(1).getName());
+        name3.setText(CommonUtils.playerList.get(2).getName());
+        name4.setText(CommonUtils.playerList.get(3).getName());
+        name5.setText(CommonUtils.playerList.get(4).getName());
+        name6.setText(CommonUtils.playerList.get(5).getName());
+
+    }
+
+    //**********************************************************************************************
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +49,7 @@ public class MainMenu extends AppCompatActivity {
         name6 = findViewById(R.id.player6NameInput);
 
         //------------------------------------------------------------------------------------------
+        populateTextEntries();
 
         //Stackoverflow article on editText view listeners
         //https://stackoverflow.com/questions/8699569/implementing-text-watcher-for-edittext
@@ -69,9 +82,6 @@ public class MainMenu extends AppCompatActivity {
             }
 
         });
-
-        //TODO write all listeners for text boxes or find a better way to implement the naming feature
-        //TODO configure existing structure to test new naming system
 
     }
 

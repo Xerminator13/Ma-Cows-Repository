@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private static Context mContext;
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
+    private CommonUtils tester;
 
     //The tutorial that I am watching said it is good to have a tag in the class for logging
     private static final String TAG = "MainActivity";
@@ -63,8 +64,8 @@ public class MainActivity extends AppCompatActivity {
     /*
     * Meant to run every other time the app is opened besides the first
      */
-    private void reInitPlayers(Context context) {
-        CommonUtils.initPrefs(context);
+    private void reInitPlayers() {
+        CommonUtils.initPlayers();
         CommonUtils.setAllPlayerVarsToPrefs(CommonUtils.playerList);
 
     }
@@ -80,13 +81,14 @@ public class MainActivity extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
 
         mContext = getApplicationContext();
+        tester = new CommonUtils(mContext);
         prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
         editor = prefs.edit();
         editor.apply();
 
         boolean createdOnce = prefs.getBoolean("savedData", false);
         if (createdOnce) {
-            reInitPlayers(mContext);
+            reInitPlayers();
 
         }
         //Call stuff that initializes with the app and should only run once in here

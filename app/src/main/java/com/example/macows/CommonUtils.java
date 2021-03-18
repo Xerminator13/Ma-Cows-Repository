@@ -14,15 +14,17 @@ public class CommonUtils {
 
     //For using shared preferences >>
     //  https://www.journaldev.com/9412/android-shared-preferences-example-tutorial
-    public CommonUtils() {
-
+    public CommonUtils(Context context) {
+        mContext = context;
+        prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
+        editor = prefs.edit();
 
     }
 
     //Setter methods
     public static void initPlayers() {
         for (int a = 0; a < 6; a++) {
-            playerList.add(new Player("Player " + (a + 1)));
+            playerList.add(new Player(""));
 
         }
 
@@ -37,10 +39,6 @@ public class CommonUtils {
 
     }
     public static void initPrefs(Context context) {
-        mContext = context;
-        prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
-        editor = prefs.edit();
-
         for (int a = 0; a < 6; a++) {
             editor.putString("p" + a + "Name", "Player " + a);
             editor.putInt("p" + a + "InField", 0);
