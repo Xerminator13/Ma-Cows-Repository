@@ -22,119 +22,155 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName4"
+        android:id="@+id/player3NameInput"
         android:layout_width="259dp"
         android:layout_height="50dp"
+        android:layout_marginTop="69dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player 1 Name"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="296dp" />
+        android:text="Player 3 Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/player2NameInput" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/player2NameInput"
         android:layout_width="259dp"
         android:layout_height="50dp"
+        android:layout_marginTop="75dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player 1 Name"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="227dp" />
+        android:text="Player 2 Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toTopOf="@+id/player1NameInput" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/player1NameInput"
         android:layout_width="259dp"
         android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Player 1 Name"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="152dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toTopOf="@+id/appLabelView" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName7"
+        android:id="@+id/player6NameInput"
         android:layout_width="259dp"
         android:layout_height="50dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="79dp"
+        android:layout_marginBottom="168dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player 1 Name"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="513dp" />
+        android:text="Player 6 Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.413"
+        app:layout_constraintStart_toEndOf="@+id/button6"
+        app:layout_constraintTop_toTopOf="@+id/player5NameInput" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="124dp"
         android:text="Player 1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="152dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appLabelView" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
         android:text="Player 4"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="364dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button3" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="69dp"
         android:text="Player 3"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="296dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/player5NameInput"
         android:layout_width="259dp"
         android:layout_height="50dp"
+        android:layout_marginTop="69dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player 1 Name"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="435dp" />
+        android:text="Player 5 Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="@+id/player4NameInput" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="71dp"
         android:text="Player 5"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="435dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button4" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="75dp"
         android:text="Player 2"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="227dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button" />
 
     <Button
         android:id="@+id/button6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="78dp"
         android:text="Player 6"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="513dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button5" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName5"
+        android:id="@+id/player4NameInput"
         android:layout_width="259dp"
         android:layout_height="50dp"
+        android:layout_marginTop="68dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Player 1 Name"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="364dp" />
+        android:text="Player 4 Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toTopOf="@+id/player3NameInput" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/backButton1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="121dp"
+        android:layout_marginBottom="49dp"
         android:text="Button"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="90dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

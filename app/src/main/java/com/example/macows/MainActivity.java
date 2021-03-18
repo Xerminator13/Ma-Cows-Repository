@@ -3,6 +3,7 @@ package com.example.macows;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,19 +12,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
-    private Button reInitPlayers, resetScores, populate;
+    private Button goToMainMenu, resetScores, populate;
     private EditText scoreEntry;
     private TextView displayText;
 
-    private static ArrayList<Player> playerList  = new ArrayList<Player>();
-    private static ArrayList<EconomyPlayer> econPlayerList = new ArrayList<EconomyPlayer>();
-    //For using shared preferences >>
-    //  https://www.journaldev.com/9412/android-shared-preferences-example-tutorial
     private static Context mContext;
     private SharedPreferences prefs;
     private SharedPreferences.Editor editor;
@@ -34,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TEST = "FirstTest";
 
     private String file = "high_scores";
-    private String scores;
 
     private static boolean isEconMode = false;
 
@@ -52,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public Player getPlayerFromList(int index) {
-        return playerList.get(index);
+        return CommonUtils.playerList.get(index);
 
     }
 
@@ -60,162 +52,20 @@ public class MainActivity extends AppCompatActivity {
 
     //This method is attached to the "Play normal mode" button
     //I need to save the following data:  Highest score, player name
-    private void initPlayers(boolean isNewOnCreate) {
-        if (isNewOnCreate) {
-            editor.putInt("player1", 1);
-            editor.putInt("player2", 2);
-            editor.putInt("player3", 3);
-            editor.putInt("player4", 4);
-            editor.putInt("player5", 5);
-            editor.putInt("player6", 6);
-
-            editor.commit();
-
-        }
-
-        for (int a = 0; a < 6; a++) {
-            playerList.add(new Player("Player " + (a + 1)));
-
-        }
-
-    }
-    //This method is attached to the "Play economy mode" button
-    //I need to save the following data:  Highest score, player name, most funds
-    private static void initEconPlayers() {
-        for (int a = 0; a < 6; a++) {
-            econPlayerList.add(new EconomyPlayer("Player " + (a + 1)));
-
-        }
-
-    }
-    public void runInitSetup() {
+    public void runInitSetup(Context context) {
         editor.putBoolean("savedData", true);
-
         editor.commit();
-        initPlayers(true);
+
+        CommonUtils.initPrefs(context);
+        CommonUtils.initPlayers();
 
     }
     /*
     * Meant to run every other time the app is opened besides the first
      */
-    private void reInitPlayers(boolean isNewOnCreate) {
-        if (isNewOnCreate) {
-            initPlayers(false);
-
-        }
-
-        setAllPlayerVarsToPrefs();
-
-    }
-
-    //**********************************************************************************************
-    //These methods are how I save data
-
-    private void updateAllPlayerPreferences() {
-        int a = 1;
-
-        for (Player p : playerList) {
-            editor.putString("p" + a + "Name", p.getName());
-            editor.putInt("p" + a + "InField", p.getCowsInField());
-            editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
-            editor.putInt("p" + a + "Zombies", p.getZombieCows());
-            editor.putInt("p" + a + "NumKilled", p.getNumCowsKilled());
-            editor.putInt("p" + a + "NumLost", p.getNumCowsLost());
-            editor.putInt("p" + a + "NumGained", p.getNumCowsGained());
-            editor.putInt("p" + a + "ZombiesGained", p.getNumZombieCowsGained());
-
-            a++;
-
-        }
-
-        editor.commit();
-
-    }
-    private void updatePlayerPrefs(Player p, int index) {
-        int a = index + 1;
-
-        editor.putString("p" + a + "Name", p.getName());
-        editor.putInt("p" + a + "InField", p.getCowsInField());
-        editor.putInt("p" + a + "InBarn", p.getCowsInBarn());
-        editor.putInt("p" + a + "Zombies", p.getZombieCows());
-        editor.putInt("p" + a + "NumKilled", p.getNumCowsKilled());
-        editor.putInt("p" + a + "NumLost", p.getNumCowsLost());
-        editor.putInt("p" + a + "NumGained", p.getNumCowsGained());
-        editor.putInt("p" + a + "ZombiesGained", p.getNumZombieCowsGained());
-
-        editor.commit();
-
-    }
-    private void setAllPlayerVarsToPrefs() {
-        int a = 1;
-
-        for (Player p : playerList) {
-            p.setPlayerName(prefs.getString("p" + a + "Name", "Player" + a));
-            p.setCowsInField(prefs.getInt("p" + a + "InField", 0));
-            p.setCowsInBarn(prefs.getInt("p" + a + "InBarn", 0));
-            p.setZombieCows(prefs.getInt("p" + a + "Zombies", 0));
-            p.setNumCowsKilled(prefs.getInt("p" + a + "NumKilled", 0));
-            p.setNumCowsLost(prefs.getInt("p" + a + "NumLost", 0));
-            p.setNumCowsGained(prefs.getInt("p" + a + "NumGained", 0));
-            p.setNumZombieCowsGained(prefs.getInt("p" + a + "ZombiesGained", 0));
-
-            a++;
-
-        }
-
-    }
-    private void setPlayerVarsToPrefs(Player p, int index) {
-        int a = index + 1;
-
-        p.setPlayerName(prefs.getString("p" + a + "Name", "Player" + a));
-        p.setCowsInField(prefs.getInt("p" + a + "InField", 0));
-        p.setCowsInBarn(prefs.getInt("p" + a + "InBarn", 0));
-        p.setZombieCows(prefs.getInt("p" + a + "Zombies", 0));
-        p.setNumCowsKilled(prefs.getInt("p" + a + "NumKilled", 0));
-        p.setNumCowsLost(prefs.getInt("p" + a + "NumLost", 0));
-        p.setNumCowsGained(prefs.getInt("p" + a + "NumGained", 0));
-        p.setNumZombieCowsGained(prefs.getInt("p" + a + "ZombiesGained", 0));
-
-    }
-    private String formatPlayerPrefs(int a) {
-        String formattedString = "";
-
-        formattedString += "Player Name: " + prefs.getString("p" + a + "Name", "Player" + a);
-        formattedString += "Cows in field: " + prefs.getInt("p" + a + "InField", 0);
-        formattedString += "\nCows in barn: " + prefs.getInt("p" + a + "InBarn", 0);
-        formattedString += "\nZombie Cows: " + prefs.getInt("p" + a + "Zombies", 0);
-        formattedString += "\nNumber of cows this player killed: " + prefs.getInt("p" + a + "NumKilled", 0);
-        formattedString += "\nNumber of cows this player has lost: " + prefs.getInt("p" + a + "NumLost", 0);
-        formattedString += "\nNumber of cows this player has gained: " + prefs.getInt("p" + a + "NumGained", 0);
-        formattedString += "\nNumber of zombie cows this player has gained: " + prefs.getInt("p" + a + "ZombiesGained", 0);
-
-        return formattedString;
-
-    }
-    private void removeAllSavedData() {
-        for (int a = 1; a < playerList.size() + 1; a++) {
-            editor.remove("p" + a + "Name");
-            editor.remove("p" + a + "InField");
-            editor.remove("p" + a + "InBarn");
-            editor.remove("p" + a + "Zombies");
-            editor.remove("p" + a + "NumKilled");
-            editor.remove("p" + a + "NumLost");
-            editor.remove("p" + a + "NumGained");
-            editor.remove("p" + a + "ZombiesGained");
-
-        }
-
-        editor.remove("savedData");
-        editor.remove("player1");
-        editor.remove("player2");
-        editor.remove("player3");
-        editor.remove("player4");
-        editor.remove("player5");
-        editor.remove("player6");
-
-        editor.commit();
-
-        playerList.clear();
+    private void reInitPlayers(Context context) {
+        CommonUtils.initPrefs(context);
+        CommonUtils.setAllPlayerVarsToPrefs(CommonUtils.playerList);
 
     }
 
@@ -232,37 +82,38 @@ public class MainActivity extends AppCompatActivity {
         mContext = getApplicationContext();
         prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
         editor = prefs.edit();
+        editor.apply();
 
         boolean createdOnce = prefs.getBoolean("savedData", false);
         if (createdOnce) {
-            reInitPlayers(true);
+            reInitPlayers(mContext);
 
         }
         //Call stuff that initializes with the app and should only run once in here
         else {
-            runInitSetup();
+            runInitSetup(mContext);
 
         }
 
         //------------------------------------------------------------------------------------------
 
         displayText = findViewById(R.id.textView);
-        displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
+        displayText.setText(CommonUtils.formatPlayerPrefs(1));
 
         resetScores = findViewById(R.id.resetScores);
-        reInitPlayers = findViewById(R.id.reInitButton);
+        goToMainMenu = findViewById(R.id.mainMenuTrans);
         populate = findViewById(R.id.populatePlayers);
 
         populate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                playerList.get(0).setCowsInField(19109);
-                playerList.get(0).setCowsInBarn(767400);
-                playerList.get(0).setZombieCows(25);
-                playerList.get(0).setNumCowsLost(87864);
+                CommonUtils.playerList.get(0).setCowsInField(19109);
+                CommonUtils.playerList.get(0).setCowsInBarn(767400);
+                CommonUtils.playerList.get(0).setZombieCows(25);
+                CommonUtils.playerList.get(0).setNumCowsLost(87864);
 
-                updatePlayerPrefs(playerList.get(0), 0);
+                CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(0), 0);
 
-                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
+                displayText.setText(CommonUtils.formatPlayerPrefs(1));
 
             }
 
@@ -274,29 +125,34 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Button pressed");
 
                 //Deletes all preferences and player objects
-                removeAllSavedData();
+                CommonUtils.resetAllSavedData();
+                CommonUtils.playerList.clear();
                 //Need to create new references and player objects
-                initPlayers(true);
+                CommonUtils.initPlayers();
                 //Creates necessary prefs for one player
-                updatePlayerPrefs(playerList.get(0), 0);
-                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
+                CommonUtils.updateAllPlayerPreferences(CommonUtils.playerList);
+                displayText.setText(CommonUtils.formatPlayerPrefs(1));
+                prefs.getBoolean("savedData", false);
 
             }
 
         });
-        reInitPlayers.setOnClickListener(new View.OnClickListener() {
+        goToMainMenu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("Button init pressed");
-
-                playerList.get(0).setCowsInField(19090);
-                updatePlayerPrefs(playerList.get(0), 0);
-
-                reInitPlayers(false);
-                displayText.setText(formatPlayerPrefs(prefs.getInt("player1", 1)));
+                startActivity(new Intent(MainActivity.this, MainMenu.class));
 
             }
 
         });
 
     }
+    /*
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("message", "This message is saved in the instance state");
+
+    }
+     */
+
 }

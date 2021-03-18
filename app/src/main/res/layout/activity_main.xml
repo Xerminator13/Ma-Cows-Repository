@@ -49,10 +49,10 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/reInitButton"
+        android:id="@+id/mainMenuTrans"
         android:layout_width="153dp"
         android:layout_height="wrap_content"
-        android:text="ReInit Players"
+        android:text="Go to Main Menu"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
