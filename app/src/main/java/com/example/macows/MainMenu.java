@@ -13,9 +13,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenu extends AppCompatActivity {
-    private Button player1, player2, player3, player4, player5, player6, back, endGame, goToAllScores, backButton1;
+    private Button player1, player2, player3, player4, player5, player6, back, endGameButton, allScoresButton, backButton1;
     private EditText name1, name2, name3, name4, name5, name6;
-    private TextView appLabel;
+    private TextView appLabel, timerLabel;
+
+    private int switcher = 1;
 
     //**********************************************************************************************
 
@@ -26,6 +28,25 @@ public class MainMenu extends AppCompatActivity {
         name4.setText(CommonUtils.playerList.get(3).getName());
         name5.setText(CommonUtils.playerList.get(4).getName());
         name6.setText(CommonUtils.playerList.get(5).getName());
+
+    }
+    /*
+    * Gets text from EditText views and assigns it to the player names variables
+     */
+    private void setAllPlayerNames() {
+        String temp1 = name1.getText().toString();
+        String temp2 = name2.getText().toString();
+        String temp3 = name3.getText().toString();
+        String temp4 = name4.getText().toString();
+        String temp5 = name5.getText().toString();
+        String temp6 = name6.getText().toString();
+
+        CommonUtils.playerList.get(0).setPlayerName(temp1);
+        CommonUtils.playerList.get(1).setPlayerName(temp2);
+        CommonUtils.playerList.get(2).setPlayerName(temp3);
+        CommonUtils.playerList.get(3).setPlayerName(temp4);
+        CommonUtils.playerList.get(4).setPlayerName(temp5);
+        CommonUtils.playerList.get(5).setPlayerName(temp6);
 
     }
 
@@ -40,7 +61,22 @@ public class MainMenu extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
 
         appLabel = findViewById(R.id.appLabelView);
+        timerLabel = findViewById(R.id.timerLabel);
+        if (switcher == -1) {
+            timerLabel.setVisibility(View.VISIBLE);
+            switcher *= -1;
+
+        }
+        else {
+            timerLabel.setVisibility(View.INVISIBLE);
+            switcher *= -1;
+
+        }
+
         backButton1 = findViewById(R.id.backButton1);
+        endGameButton = findViewById(R.id.endGameButton);
+        allScoresButton = findViewById(R.id.allScoresButton);
+
         name1 = findViewById(R.id.player1NameInput);
         name2 = findViewById(R.id.player2NameInput);
         name3 = findViewById(R.id.player3NameInput);
@@ -51,33 +87,29 @@ public class MainMenu extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
         populateTextEntries();
 
-        //Stackoverflow article on editText view listeners
-        //https://stackoverflow.com/questions/8699569/implementing-text-watcher-for-edittext
-        name1.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        name1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    //Does not pass data back to activity because in MainActivity the prefs were not loaded yet
-                    CommonUtils.playerList.get(0).setPlayerName(name1.getText().toString());
-                    CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(0), 0);
-                    System.out.println("Set player name");
-                    return true;
+        backButton1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setAllPlayerNames();
+                CommonUtils.updateAllPlayerPreferences(CommonUtils.playerList);
 
-                }
-                else {
-                    System.out.println("Did not set player name");
-                    return false;
-
-                }
+                //Starts the MainActivity;  A transition between the two activities
+                startActivity(new Intent(MainMenu.this, MainActivity.class));
 
             }
 
         });
-        backButton1.setOnClickListener(new View.OnClickListener() {
+        endGameButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CommonUtils.playerList.get(0).setPlayerName(name1.getText().toString());
-                startActivity(new Intent(MainMenu.this, MainActivity.class));
+                if (switcher == -1) {
+                    timerLabel.setVisibility(View.VISIBLE);
+                    switcher *= -1;
+
+                }
+                else {
+                    timerLabel.setVisibility(View.INVISIBLE);
+                    switcher *= -1;
+
+                }
 
             }
 

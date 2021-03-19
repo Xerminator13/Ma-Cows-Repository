@@ -2,9 +2,7 @@ This is a document detailing all of the features needed to be added to the app f
 
 Build functioning application that can be player with base game:
  - MainMenu:
-  > Set text listeners for EditText fields for players 2-6
-  > Add end game and all scores button
-  > Add onClickListeners for Player buttons 1-6
+  > Add onClickListeners for Player buttons 1-6, endGame button, and allScoresButton
 
  - ScoreScreen:
   > Create new activity and add to AndroidManifest.xml
@@ -57,4 +55,4 @@ New features for enhanced game play:
   > Create appropriate SharedPreferences to store time data.
 
  - Implement economy mode and appropriate activities and features to support this mode:
-  >
+  > TBD

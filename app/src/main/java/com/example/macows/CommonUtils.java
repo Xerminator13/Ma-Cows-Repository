@@ -12,6 +12,8 @@ public class CommonUtils {
     public static ArrayList<Player> playerList  = new ArrayList<Player>();
     public static ArrayList<EconomyPlayer> econPlayerList = new ArrayList<EconomyPlayer>();
 
+    public int currentPlayerNum = 1;
+
     //For using shared preferences >>
     //  https://www.journaldev.com/9412/android-shared-preferences-example-tutorial
     public CommonUtils(Context context) {
