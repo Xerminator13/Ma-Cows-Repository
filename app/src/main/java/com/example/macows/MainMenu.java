@@ -156,7 +156,7 @@ public class MainMenu extends AppCompatActivity {
         });
         endGameButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                if (switcher == -1) {
+                if (switcher == 1) {
                     timerLabel.setVisibility(View.VISIBLE);
                     switcher *= -1;
 
