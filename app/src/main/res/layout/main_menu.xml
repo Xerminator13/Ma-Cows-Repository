@@ -34,7 +34,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/player4NameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button3" />
+        app:layout_constraintStart_toEndOf="@+id/p3Button" />
 
     <EditText
         android:id="@+id/player2NameInput"
@@ -50,7 +50,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/player3NameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button2" />
+        app:layout_constraintStart_toEndOf="@+id/p2Button" />
 
     <EditText
         android:id="@+id/player1NameInput"
@@ -66,7 +66,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/player2NameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/p1Button" />
 
     <EditText
         android:id="@+id/player6NameInput"
@@ -82,36 +82,36 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button6" />
+        app:layout_constraintStart_toEndOf="@+id/p6Button" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/p1Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="75dp"
         android:text="Player 1"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/p2Button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/p4Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="71dp"
         android:text="Player 4"
-        app:layout_constraintBottom_toBottomOf="@+id/button5"
+        app:layout_constraintBottom_toBottomOf="@+id/p5Button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/p3Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="69dp"
         android:text="Player 3"
-        app:layout_constraintBottom_toBottomOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="@+id/p4Button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -128,30 +128,30 @@
         app:layout_constraintBottom_toBottomOf="@+id/player6NameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button5" />
+        app:layout_constraintStart_toEndOf="@+id/p5Button" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/p5Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="80dp"
         android:text="Player 5"
-        app:layout_constraintBottom_toBottomOf="@+id/button6"
+        app:layout_constraintBottom_toBottomOf="@+id/p6Button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/p2Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="69dp"
         android:text="Player 2"
-        app:layout_constraintBottom_toBottomOf="@+id/button3"
+        app:layout_constraintBottom_toBottomOf="@+id/p3Button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/p6Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -174,7 +174,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/player5NameInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button4" />
+        app:layout_constraintStart_toEndOf="@+id/p4Button" />
 
     <Button
         android:id="@+id/backButton1"

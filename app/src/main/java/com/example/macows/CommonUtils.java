@@ -35,7 +35,7 @@ public class CommonUtils {
     //I need to save the following data:  Highest score, player name, most funds
     public static void initEconPlayers() {
         for (int a = 0; a < 6; a++) {
-            econPlayerList.add(new EconomyPlayer("Player " + (a + 1)));
+            econPlayerList.add(new EconomyPlayer(""));
 
         }
 
@@ -60,6 +60,10 @@ public class CommonUtils {
     }
     public static void setCurrentPlayer(int player) {
         editor.putInt("currentPlayer", player);
+
+    }
+    public static int getCurrentPlayer() {
+        return prefs.getInt("currentPlayer", 1);
 
     }
     public static void updateAllPlayerPreferences(ArrayList<Player> playerList) {

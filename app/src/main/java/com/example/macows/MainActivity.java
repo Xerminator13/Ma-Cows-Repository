@@ -99,33 +99,25 @@ public class MainActivity extends AppCompatActivity {
 
         //------------------------------------------------------------------------------------------
 
-        displayText = findViewById(R.id.textView);
-        displayText.setText(CommonUtils.formatPlayerPrefs(1));
-
         resetScores = findViewById(R.id.resetScores);
         goToMainMenu = findViewById(R.id.mainMenuTrans);
         populate = findViewById(R.id.populatePlayers);
 
         populate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CommonUtils.playerList.get(0).setCowsInField(19109);
-                CommonUtils.playerList.get(0).setCowsInBarn(767400);
-                CommonUtils.playerList.get(0).setZombieCows(25);
-                CommonUtils.playerList.get(0).setNumCowsLost(87864);
+                for (int a = 0; a < CommonUtils.playerList.size(); a++) {
+                    CommonUtils.playerList.get(a).setCowsInField((int)(Math.random()*19109));
+                    CommonUtils.playerList.get(a).setCowsInBarn((int)(Math.random()*767400));
+                    CommonUtils.playerList.get(a).setZombieCows(25);
+                    CommonUtils.playerList.get(a).setNumCowsLost((int)(Math.random()*87864));
 
-                CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(0), 0);
-
-                displayText.setText(CommonUtils.formatPlayerPrefs(1));
+                }
 
             }
 
         });
         resetScores.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //This is formatting listeners for later
-                //scores = scoreEntry.getText().toString();
-                System.out.println("Button pressed");
-
                 //Deletes all preferences and player objects
                 CommonUtils.resetAllSavedData();
                 CommonUtils.playerList.clear();
@@ -133,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
                 CommonUtils.initPlayers();
                 //Creates necessary prefs for one player
                 CommonUtils.updateAllPlayerPreferences(CommonUtils.playerList);
-                displayText.setText(CommonUtils.formatPlayerPrefs(1));
                 prefs.getBoolean("savedData", false);
 
             }

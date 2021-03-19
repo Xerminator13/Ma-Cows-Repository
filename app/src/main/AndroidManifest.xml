@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaCows">
+
+        <!--This is the Main Activity-->
         <activity android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -18,19 +20,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainMenu"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+        <!--This is the Main Menu-->
+        <activity
+            android:name=".MainMenu"
+            android:screenOrientation="portrait"
+            android:label="Main Menu"
+            android:parentActivityName=".MainActivity"
+                >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.macows.MainMenu"
+                />
         </activity>
-        <activity android:name=".ScoreScreen"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
+        <!--This is the Score Screen-->
+        <activity
+            android:name=".ScoreScreen"
+            android:screenOrientation="portrait"
+            android:label="Score Screen"
+            android:parentActivityName=".MainMenu"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.macows.ScoreScreen"
+                />
         </activity>
 
     </application>

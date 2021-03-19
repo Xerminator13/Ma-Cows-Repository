@@ -1,7 +1,9 @@
 package com.example.macows;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,12 +17,19 @@ public class ScoreScreen extends AppCompatActivity {
 
     //----------------------------------------------------------------------------------------------
 
-    private void setAllTextViewsToPlayerData() {
-        //Type code here
+    private void setAllTextViewsToPlayerData(int a) {
+        int b = a - 1;
+        playerNameLabel.setText(CommonUtils.playerList.get(b).getName());
+        numCowsInField.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
 
     }
     private void initAllElements() {
-        //Type code here
+        playerNameLabel = findViewById(R.id.playerNameLabel);
+        scoreEntry = findViewById(R.id.scoreEntry);
+        back = findViewById(R.id.scoreScreenToMainMenu);
+
+        //Temporary arrangement
+        numCowsInField = findViewById(R.id.textView4);
 
     }
 
@@ -29,13 +38,23 @@ public class ScoreScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_menu);
-        Log.d("MainMenu", "onCreate: started!");
+        setContentView(R.layout.score_screen);
+        Log.d("ScoreScreen", "onCreate: started!");
 
         //------------------------------------------------------------------------------------------
         
         initAllElements();
-        setAllTextViewsToPlayerData();
+        setAllTextViewsToPlayerData(CommonUtils.getCurrentPlayer());
+
+        //------------------------------------------------------------------------------------------
+
+        back.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(ScoreScreen.this, MainMenu.class));
+
+            }
+
+        });
 
     }
 

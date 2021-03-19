@@ -15,6 +15,7 @@ Build functioning application that can be player with base game:
 
  - TakeCowsScreen:
   > Create new activity and add to AndroidManifest.xml
+   - Remember to change the setContentView(R.layout.xml_file_name) so that it renders the correct layout
   > Layout all elements and set constraints
    - Includes TextViews for labels, dropdown menus for descoring, confirm descore button, and back button
   > Add onClickListener for confirmation button

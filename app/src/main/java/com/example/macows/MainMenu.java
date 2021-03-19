@@ -50,8 +50,30 @@ public class MainMenu extends AppCompatActivity {
 
     }
     private void goToScoreScreen(int player) {
+        setAllPlayerNames();
         CommonUtils.setCurrentPlayer(player);
+        CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(player - 1), player - 1);
         startActivity(new Intent(MainMenu.this, ScoreScreen.class));
+
+    }
+    private void initAllElements() {
+        backButton1 = findViewById(R.id.backButton1);
+        endGameButton = findViewById(R.id.endGameButton);
+        allScoresButton = findViewById(R.id.allScoresButton);
+
+        name1 = findViewById(R.id.player1NameInput);
+        name2 = findViewById(R.id.player2NameInput);
+        name3 = findViewById(R.id.player3NameInput);
+        name4 = findViewById(R.id.player4NameInput);
+        name5 = findViewById(R.id.player5NameInput);
+        name6 = findViewById(R.id.player6NameInput);
+
+        player1 = findViewById(R.id.p1Button);
+        player2 = findViewById(R.id.p2Button);
+        player3 = findViewById(R.id.p3Button);
+        player4 = findViewById(R.id.p4Button);
+        player5 = findViewById(R.id.p5Button);
+        player6 = findViewById(R.id.p6Button);
 
     }
 
@@ -67,72 +89,53 @@ public class MainMenu extends AppCompatActivity {
 
         appLabel = findViewById(R.id.appLabelView);
         timerLabel = findViewById(R.id.timerLabel);
-        if (switcher == -1) {
-            timerLabel.setVisibility(View.VISIBLE);
-            switcher *= -1;
-
-        }
-        else {
-            timerLabel.setVisibility(View.INVISIBLE);
-            switcher *= -1;
-
-        }
-
-        backButton1 = findViewById(R.id.backButton1);
-        endGameButton = findViewById(R.id.endGameButton);
-        allScoresButton = findViewById(R.id.allScoresButton);
-
-        name1 = findViewById(R.id.player1NameInput);
-        name2 = findViewById(R.id.player2NameInput);
-        name3 = findViewById(R.id.player3NameInput);
-        name4 = findViewById(R.id.player4NameInput);
-        name5 = findViewById(R.id.player5NameInput);
-        name6 = findViewById(R.id.player6NameInput);
+        timerLabel.setVisibility(View.INVISIBLE);
 
         //------------------------------------------------------------------------------------------
 
+        initAllElements();
         populateTextEntries();
 
         //------------------------------------------------------------------------------------------
 
         player1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToScoreScreen(1);
 
             }
 
         });
         player2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToScoreScreen(2);
 
             }
 
         });
         player3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToScoreScreen(3);
 
             }
 
         });
         player4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToScoreScreen(4);
 
             }
 
         });
         player5.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToScoreScreen(5);
 
             }
 
         });
         player6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                goToScoreScreen(6);
 
             }
 
