@@ -49,6 +49,11 @@ public class MainMenu extends AppCompatActivity {
         CommonUtils.playerList.get(5).setPlayerName(temp6);
 
     }
+    private void goToScoreScreen(int player) {
+        CommonUtils.setCurrentPlayer(player);
+        startActivity(new Intent(MainMenu.this, ScoreScreen.class));
+
+    }
 
     //**********************************************************************************************
 
@@ -85,7 +90,55 @@ public class MainMenu extends AppCompatActivity {
         name6 = findViewById(R.id.player6NameInput);
 
         //------------------------------------------------------------------------------------------
+
         populateTextEntries();
+
+        //------------------------------------------------------------------------------------------
+
+        player1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+
+        });
+        player2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+
+        });
+        player3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+
+        });
+        player4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+
+        });
+        player5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+
+        });
+        player6.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+
+            }
+
+        });
+
+        //------------------------------------------------------------------------------------------
 
         backButton1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -110,6 +163,13 @@ public class MainMenu extends AppCompatActivity {
                     switcher *= -1;
 
                 }
+
+            }
+
+        });
+        allScoresButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Transition to AllScoresScreen
 
             }
 

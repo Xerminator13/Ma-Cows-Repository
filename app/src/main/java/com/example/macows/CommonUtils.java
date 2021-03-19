@@ -53,7 +53,13 @@ public class CommonUtils {
 
         }
 
+        editor.putInt("currentPlayer", 1);
+
         editor.commit();
+
+    }
+    public static void setCurrentPlayer(int player) {
+        editor.putInt("currentPlayer", player);
 
     }
     public static void updateAllPlayerPreferences(ArrayList<Player> playerList) {

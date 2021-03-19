@@ -121,6 +121,11 @@ public class Player {
     }
 
     //Scoring methods
+    public void addToField(int numCows) {
+        this.cowsInField += numCows;
+        this.numCowsGained += numCows;
+
+    }
     public void sawChurch() {
         this.numCowsGained += this.cowsInField;
         this.cowsInField *= 2;
@@ -140,7 +145,7 @@ public class Player {
     /*
     Checks for you if the player has any cows in their barn or field
      */
-    public void ressurectZombieCows() {
+    public void resurrectZombieCows() {
         if (this.cowsInField == 0 && this.cowsInBarn == 0) {
             this.cowsInField = 25;
             this.numCowsGained += 25;
@@ -176,7 +181,7 @@ public class Player {
     /*
     @return true if cows can be deposited, false if not
      */
-    public boolean withdrawlFromBarn(int numCows) {
+    public boolean withdrawFromBarn(int numCows) {
         if (this.cowsInBarn >= numCows) {
             this.cowsInBarn -= numCows;
             this.cowsInField += numCows;
@@ -207,7 +212,7 @@ public class Player {
         other.addNumCowsLost(numCows);
 
     }
-    public void sawCemetary(Player other) {
+    public void sawCemetery(Player other) {
         other.addNumCowsLost(other.getCowsInField());
         other.setCowsInField(0);
 
