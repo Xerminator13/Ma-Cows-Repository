@@ -1,0 +1,60 @@
+This is a document detailing all of the features needed to be added to the app from greatest to least importance
+
+Build functioning application that can be player with base game:
+ - MainMenu:
+  > Set text listeners for EditText fields for players 2-6
+  > Add end game and all scores button
+  > Add onClickListeners for Player buttons 1-6
+
+ - ScoreScreen:
+  > Create new activity and add to AndroidManifest.xml
+  > Layout all elements on the screen and set constraints
+   - Includes all score/descore buttons, EditText field, TextViews for labels and score reporting, and back button
+  > Add onEditListener for EditText field for adding to player score
+  > Add onClickListeners for all scoring and descoring buttons and implement ability to edit player score
+  > Add transition from ScoreScreen to MainMenu with onClickListener for the back button
+
+ - TakeCowsScreen:
+  > Create new activity and add to AndroidManifest.xml
+  > Layout all elements and set constraints
+   - Includes TextViews for labels, dropdown menus for descoring, confirm descore button, and back button
+  > Add onClickListener for confirmation button
+  > Add transition from TakeCowsScreen to ScoreScreen with onClickListener for back button
+  > Figure out how to use drop down menus to identify players
+   - If that is too difficult, implementing buttons should not be that bad...
+
+ - AllScoresScreen:
+  > Create new activity and add to AndroidManifest.xml
+  > Implement scrolling container to hold all elements
+  > Layout all elements and set constraints
+   - this includes TextViews for name labels, Field scores, barn scores, and zombie scores for all players,
+        42 TextViews in total, and a back button at the top and bottom of the screen.
+        Or, figure out a better way to handle score reporting
+  > Add transition from AllScoresScreen to MainMenu using onClickListener for both back buttons
+
+ - EndGameScreen:
+  > Create activity and add to AndroidManifest.xml
+  > Layout all elements and set constraints
+   - This includes a TextView to display name of winner, back button, and play again button
+  > Add delete action using onClickListener for play again button
+  > Add transition from EndGameScreen to MainMenu with onClickListener for back button
+  > Add transition from EndGameScreen to MainActivity with onClickListener for back play again button
+
+ - RulesScreen:
+  > Create activity and add to AndroidManifest.xml
+  > Layout all elements and set constraints
+   - this includes one TextView and a back button
+  > Add transition from RulesScreen to MainActivity with onClickListener for back button
+
+New features for enhanced game play:
+ - ChooseTimeScreen:
+  > Create new activity and add to AndroidManifest.xml
+  > Layout all elements and set constraints
+   - this includes TextView as a label, buttons for choosing predetermined time limits for games,
+        confirmation button, and an EditText field for typing in a custom amount of time.
+  > Add button on MainActivity and add transition from MainActivity to ChooseTimeScreen with onClickListener
+        for the transition button.
+  > Create appropriate SharedPreferences to store time data.
+
+ - Implement economy mode and appropriate activities and features to support this mode:
+  >
