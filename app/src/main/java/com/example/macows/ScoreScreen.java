@@ -39,38 +39,6 @@ public class ScoreScreen extends AppCompatActivity {
     }
     //According to Stackoverflow, this is the fastest way to find out if a string is an integer
     //https://stackoverflow.com/questions/237159/whats-the-best-way-to-check-if-a-string-represents-an-integer-in-java
-    private boolean isInteger(String a) {
-        if (a == null) {
-            return false;
-
-        }
-        int length = a.length();
-        if (length == 0) {
-            return false;
-
-        }
-        int i = 0;
-        if (a.charAt(0) == '-') {
-            if (a.length() == 1) {
-                return false;
-
-            }
-            i = 1;
-
-        }
-        for (; i < length; i++) {
-            char c = a.charAt(i);
-
-            if (c < '0' || c > '9' && c != '.') {
-                return false;
-
-            }
-
-        }
-
-        return true;
-
-    }
 
     //**********************************************************************************************
 
@@ -90,7 +58,7 @@ public class ScoreScreen extends AppCompatActivity {
         addToField.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
-                if (isInteger(input1)) {
+                if (input1 != null && input1 != "") {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
@@ -116,7 +84,7 @@ public class ScoreScreen extends AppCompatActivity {
         addToBarn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
-                if (isInteger(input1)) {
+                if (input1 != null && input1 != "") {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
@@ -148,7 +116,7 @@ public class ScoreScreen extends AppCompatActivity {
         takeFromBarn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
-                if (isInteger(input1)) {
+                if (input1 != null && input1 != "") {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {

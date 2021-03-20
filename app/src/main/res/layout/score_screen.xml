@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#66913B">
+    android:background="#66913B"
+    android:hapticFeedbackEnabled="false">
 
     <TextView
         android:id="@+id/playerNameLabel"
@@ -32,32 +33,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playerNameLabel" />
 
-    <EditText
-        android:id="@+id/scoreEntry"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="4dp"
-        android:background="#C6C6C6"
-        android:backgroundTint="#959595"
-        android:ems="10"
-        android:hint="Input Number of Cows Here"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
     <TextView
         android:id="@+id/errorLabel"
         android:layout_width="318dp"
         android:layout_height="407dp"
-        android:layout_marginTop="35dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoreEntry"
-        app:layout_constraintVertical_bias="0.511" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74" />
 
     <Button
         android:id="@+id/scoreScreenToMainMenu"
@@ -72,9 +58,10 @@
 
     <Button
         android:id="@+id/addToBarn"
-        android:layout_width="203dp"
+        android:layout_width="0dp"
         android:layout_height="42dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="1dp"
         android:text="Put In Barn"
         app:layout_constraintEnd_toStartOf="@+id/takeFromBarn"
         app:layout_constraintHorizontal_bias="0.0"
@@ -83,8 +70,9 @@
 
     <Button
         android:id="@+id/takeFromBarn"
-        android:layout_width="205dp"
+        android:layout_width="0dp"
         android:layout_height="42dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="2dp"
         android:text="Take From Barn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,4 +88,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreEntry" />
+
+    <EditText
+        android:id="@+id/scoreEntry"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:background="#717171"
+        android:ems="10"
+        android:hint="Input Number of Cows Here"
+        android:inputType="number"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/addToField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
