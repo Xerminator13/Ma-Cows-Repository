@@ -37,22 +37,38 @@ public class ScoreScreen extends AppCompatActivity {
         numCowsInField = findViewById(R.id.errorLabel);
 
     }
+    //According to Stackoverflow, this is the fastest way to find out if a string is an integer
+    //https://stackoverflow.com/questions/237159/whats-the-best-way-to-check-if-a-string-represents-an-integer-in-java
     private boolean isInteger(String a) {
-        if (a != null) {
-            try {
-                Integer.parseInt(a);
-                return true;
+        if (a == null) {
+            return false;
 
-            } catch (Exception e) {
+        }
+        int length = a.length();
+        if (length == 0) {
+            return false;
+
+        }
+        int i = 0;
+        if (a.charAt(0) == '-') {
+            if (a.length() == 1) {
+                return false;
+
+            }
+            i = 1;
+
+        }
+        for (; i < length; i++) {
+            char c = a.charAt(i);
+
+            if (c < '0' || c > '9' && c != '.') {
                 return false;
 
             }
 
         }
-        else {
-            return false;
 
-        }
+        return true;
 
     }
 
@@ -84,7 +100,7 @@ public class ScoreScreen extends AppCompatActivity {
 
                     }
                     else {
-                        errorLabel.setText("You cannot input a negative number of cows");
+                        errorLabel.setText("You cannot input a negative number of cows.");
 
                     }
 
@@ -94,10 +110,74 @@ public class ScoreScreen extends AppCompatActivity {
 
                 }
 
+            }
+
+        });
+        addToBarn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String input1 = scoreEntry.getText().toString();
+                if (isInteger(input1)) {
+                    int input2 = Integer.parseInt(input1);
+
+                    if (input2 > 0) {
+                        if (CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).depositInBarn(input2)) {
+                            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+                            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+
+                        }
+                        else {
+                            errorLabel.setText("You cannot put more cows in your barn than you have in your field.");
+
+                        }
+
+                    }
+                    else {
+                        errorLabel.setText("You cannot input a negative number of cows.");
+
+                    }
+
+                }
+                else {
+                    errorLabel.setText("You did not input a whole number of cows, please try again.");
+
+                }
 
             }
 
         });
+        takeFromBarn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                String input1 = scoreEntry.getText().toString();
+                if (isInteger(input1)) {
+                    int input2 = Integer.parseInt(input1);
+
+                    if (input2 > 0) {
+                        if (CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).withdrawFromBarn(input2)) {
+                            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+                            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+
+                        }
+                        else {
+                            errorLabel.setText("You cannot withdraw more cows from your barn than you actually have.");
+
+                        }
+
+                    }
+                    else {
+                        errorLabel.setText("You cannot input a negative number of cows.");
+
+                    }
+
+                }
+                else {
+                    errorLabel.setText("You did not input a whole number of cows, please try again.");
+
+                }
+
+            }
+
+        });
+
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(ScoreScreen.this, MainMenu.class));
