@@ -20,21 +20,28 @@ public class ScoreScreen extends AppCompatActivity {
     private void setAllTextViewsToPlayerData(int a) {
         int b = a - 1;
         playerNameLabel.setText(CommonUtils.playerList.get(b).getName());
-        numCowsInField.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+        numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInField());
+        errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
 
     }
     private void initAllElements() {
+        //TextViews
         playerNameLabel = findViewById(R.id.playerNameLabel);
+        errorLabel = findViewById(R.id.errorLabel);
+        numCowsInField = findViewById(R.id.numCowsInField);
+
+        //EditText views
         scoreEntry = findViewById(R.id.scoreEntry);
+
+        //Button views
         addToField = findViewById(R.id.addToField);
         addToBarn = findViewById(R.id.addToBarn);
         takeFromBarn = findViewById(R.id.takeFromBarn);
-
-        errorLabel = findViewById(R.id.errorLabel);
         back = findViewById(R.id.scoreScreenToMainMenu);
 
-        //Temporary arrangement
-        numCowsInField = findViewById(R.id.errorLabel);
+    }
+    private void updateTextViews() {
+        numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInField());
 
     }
     //According to Stackoverflow, this is the fastest way to find out if a string is an integer
@@ -64,6 +71,7 @@ public class ScoreScreen extends AppCompatActivity {
                     if (input2 > 0) {
                         CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).addCowsToField(input2);
                         CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+                        updateTextViews();
                         errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
 
                     }
@@ -90,6 +98,7 @@ public class ScoreScreen extends AppCompatActivity {
                     if (input2 > 0) {
                         if (CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).depositInBarn(input2)) {
                             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+                            updateTextViews();
                             errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
 
                         }
@@ -122,6 +131,7 @@ public class ScoreScreen extends AppCompatActivity {
                     if (input2 > 0) {
                         if (CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).withdrawFromBarn(input2)) {
                             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+                            updateTextViews();
                             errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
 
                         }

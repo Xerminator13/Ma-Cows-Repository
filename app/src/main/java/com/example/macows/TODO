@@ -44,6 +44,7 @@ Build functioning application that can be player with base game:
   > Create activity and add to AndroidManifest.xml
   > Layout all elements and set constraints
    - this includes one TextView and a back button
+   - There is an attribute for TextViews called nestedScrollingEnabled that you will need to mkae true for the rules TextView
   > Add transition from RulesScreen to MainActivity with onClickListener for back button
 
 New features for enhanced game play:

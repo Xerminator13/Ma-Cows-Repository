@@ -102,6 +102,11 @@ public class Player {
         this.cowsInField += numCows;
         this.numCowsGained += numCows;
 
+        if (this.cowsInField < 0) {
+            this.cowsInField = 0;
+
+        }
+
     }
     public void takeCowsFromField(int numCows) {
         this.cowsInField -= numCows;
@@ -121,11 +126,6 @@ public class Player {
     }
 
     //Scoring methods
-    public void addToField(int numCows) {
-        this.cowsInField += numCows;
-        this.numCowsGained += numCows;
-
-    }
     public void sawChurch() {
         this.numCowsGained += this.cowsInField;
         this.cowsInField *= 2;
