@@ -23,7 +23,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="4dp"
         android:outlineAmbientShadowColor="#00FFFFFF"
         android:text="Herd Management"
         android:textAlignment="center"
@@ -36,7 +36,7 @@
         android:id="@+id/scoreEntry"
         android:layout_width="0dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:background="#C6C6C6"
         android:backgroundTint="#959595"
         android:ems="10"
@@ -48,26 +48,56 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="325dp"
-        android:layout_height="388dp"
+        android:id="@+id/errorLabel"
+        android:layout_width="318dp"
+        android:layout_height="407dp"
         android:layout_marginTop="35dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreEntry"
-        app:layout_constraintVertical_bias="0.108" />
+        app:layout_constraintVertical_bias="0.511" />
 
     <Button
         android:id="@+id/scoreScreenToMainMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:text="Button"
+        android:layout_marginBottom="16dp"
+        android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addToBarn"
+        android:layout_width="203dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="2dp"
+        android:text="Put In Barn"
+        app:layout_constraintEnd_toStartOf="@+id/takeFromBarn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintTop_toBottomOf="@+id/addToField" />
+
+    <Button
+        android:id="@+id/takeFromBarn"
+        android:layout_width="205dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="2dp"
+        android:text="Take From Barn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addToBarn"
+        app:layout_constraintTop_toBottomOf="@+id/addToField" />
+
+    <Button
+        android:id="@+id/addToField"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="2dp"
+        android:text="Add To Field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreEntry" />
 </androidx.constraintlayout.widget.ConstraintLayout>
