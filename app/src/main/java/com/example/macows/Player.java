@@ -23,35 +23,35 @@ public class Player {
 
     //Getter methods
     public String getName() {
-        return name;
+        return this.name;
 
     }
     public int getCowsInField() {
-        return cowsInField;
+        return this.cowsInField;
 
     }
     public int getCowsInBarn() {
-        return cowsInBarn;
+        return this.cowsInBarn;
 
     }
     public int getZombieCows() {
-        return zombieCows;
+        return this.zombieCows;
 
     }
     public int getNumCowsKilled() {
-        return numCowsKilled;
+        return this.numCowsKilled;
 
     }
     public int getNumCowsLost() {
-        return numCowsLost;
+        return this.numCowsLost;
 
     }
     public int getNumCowsGained() {
-        return numCowsGained;
+        return this.numCowsGained;
 
     }
     public int getNumZombieCowsGained() {
-        return numZombieCowsGained;
+        return this.numZombieCowsGained;
 
     }
 
@@ -139,17 +139,37 @@ public class Player {
     //Random percentage of current cows in field is added to the cows in the field as additional cows
     public void sawSchool() {
        double percentage = Math.random();
-       this.cowsInField +=(int)(this.cowsInField*(1 + percentage));
+       this.cowsInField =(int)(this.cowsInField*(1 + percentage));
 
     }
     /*
     Checks for you if the player has any cows in their barn or field
      */
-    public void resurrectZombieCows() {
-        if (this.cowsInField == 0 && this.cowsInBarn == 0) {
-            this.cowsInField = 25;
-            this.numCowsGained += 25;
-            this.zombieCows = 0;
+    public String resurrectZombieCows() {
+        if (this.zombieCows > 0) {
+            if (this.cowsInField == 0) {
+                if (this.cowsInBarn == 0) {
+                    this.cowsInField = 25;
+                    this.numCowsGained += 25;
+                    this.zombieCows -= 25;
+
+                    return "You summon the dead to terrorize your opponents";
+
+                }
+                else {
+                    return "You still have cows in your barn, use those!";
+
+                }
+
+            }
+            else {
+                return "You already have cows in your field!";
+
+            }
+
+        }
+        else {
+            return "You don't have any zombie cows!";
 
         }
 

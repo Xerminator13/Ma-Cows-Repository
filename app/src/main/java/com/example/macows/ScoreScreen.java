@@ -18,15 +18,10 @@ public class ScoreScreen extends AppCompatActivity {
     private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, herdManagement, animalHusbandry, errorLabel;
     private View scoreScreenLayout;
 
+    private int currentPlayer = 1;
+
     //----------------------------------------------------------------------------------------------
 
-    private void setAllTextViewsToPlayerData(int a) {
-        int b = a - 1;
-        playerNameLabel.setText(CommonUtils.playerList.get(b).getName());
-        numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInField());
-        errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
-
-    }
     private void initAllElements() {
         //TextViews
         playerNameLabel = findViewById(R.id.playerNameLabel);
@@ -58,44 +53,49 @@ public class ScoreScreen extends AppCompatActivity {
         scoreScreenLayout = findViewById(R.id.scoreScreenLayout);
 
     }
-    private void updateTextViews() {
-        numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInField());
-        numCowsInBarn.setText("Cows In Your Barn:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInBarn());
-        numZombieCows.setText("Your Zombie Cows:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getZombieCows());
+    private void updateTextViews(int a) {
+        int b = a - 1;
+        playerNameLabel.setText(CommonUtils.playerList.get(b).getName());
+
+        numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(currentPlayer - 1).getCowsInField());
+        numCowsInBarn.setText("Cows In Your Barn:  " + CommonUtils.playerList.get(currentPlayer - 1).getCowsInBarn());
+        numZombieCows.setText("Your Zombie Cows:  " + CommonUtils.playerList.get(currentPlayer - 1).getZombieCows());
+
+        errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
     }
     private void runScoringMethods(int a) {
         //School
         if (a == 1) {
-            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawSchool();
-            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-            updateTextViews();
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+            CommonUtils.playerList.get(currentPlayer - 1).sawSchool();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+            updateTextViews(currentPlayer);
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
 
         }
         //Road Kill
         else if (a == 2) {
-            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawRoadKill();
-            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-            updateTextViews();
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+            CommonUtils.playerList.get(currentPlayer - 1).sawRoadKill();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+            updateTextViews(currentPlayer);
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
         //Hospital
         else if (a == 3) {
-            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawHostpital();
-            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-            updateTextViews();
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+            CommonUtils.playerList.get(currentPlayer - 1).sawHostpital();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+            updateTextViews(currentPlayer);
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
         //Church
         else if (a == 4) {
-            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawChurch();
-            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-            updateTextViews();
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+            CommonUtils.playerList.get(currentPlayer - 1).sawChurch();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+            updateTextViews(currentPlayer);
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
         //Cemetery
@@ -129,10 +129,10 @@ public class ScoreScreen extends AppCompatActivity {
 
         }
         else if (a == 10) {
-            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawRoadKill();
-            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-            updateTextViews();
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+            String error = CommonUtils.playerList.get(currentPlayer - 1).resurrectZombieCows();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+            updateTextViews(currentPlayer);
+            errorLabel.setText(error);
 
         }
 
@@ -150,8 +150,9 @@ public class ScoreScreen extends AppCompatActivity {
 
         //------------------------------------------------------------------------------------------
 
+        currentPlayer = currentPlayer;
         initAllElements();
-        setAllTextViewsToPlayerData(CommonUtils.getCurrentPlayer());
+        updateTextViews(currentPlayer);
 
         //------------------------------------------------------------------------------------------
 
@@ -163,10 +164,10 @@ public class ScoreScreen extends AppCompatActivity {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
-                        CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).addCowsToField(input2);
-                        CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-                        updateTextViews();
-                        errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+                        CommonUtils.playerList.get(currentPlayer - 1).addCowsToField(input2);
+                        CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+                        updateTextViews(currentPlayer);
+                        errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
                     }
                     else {
@@ -191,10 +192,10 @@ public class ScoreScreen extends AppCompatActivity {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
-                        if (CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).depositInBarn(input2)) {
-                            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-                            updateTextViews();
-                            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+                        if (CommonUtils.playerList.get(currentPlayer - 1).depositInBarn(input2)) {
+                            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+                            updateTextViews(currentPlayer);
+                            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
                         }
                         else {
@@ -225,10 +226,10 @@ public class ScoreScreen extends AppCompatActivity {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
-                        if (CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).withdrawFromBarn(input2)) {
-                            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
-                            updateTextViews();
-                            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+                        if (CommonUtils.playerList.get(currentPlayer - 1).withdrawFromBarn(input2)) {
+                            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
+                            updateTextViews(currentPlayer);
+                            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
                         }
                         else {

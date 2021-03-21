@@ -154,13 +154,13 @@ public class CommonUtils {
         String formattedString = "";
 
         formattedString += "Player Name: " + prefs.getString("p" + a + "Name", "Player" + a);
-        formattedString += "\nCows in field: " + prefs.getInt("p" + a + "InField", 0);
+        formattedString += ", Cows in field: " + prefs.getInt("p" + a + "InField", 0);
         formattedString += "\nCows in barn: " + prefs.getInt("p" + a + "InBarn", 0);
-        formattedString += "\nZombie Cows: " + prefs.getInt("p" + a + "Zombies", 0);
-        formattedString += "\nNumber of cows this player killed: " + prefs.getInt("p" + a + "NumKilled", 0);
-        formattedString += "\nNumber of cows this player has lost: " + prefs.getInt("p" + a + "NumLost", 0);
-        formattedString += "\nNumber of cows this player has gained: " + prefs.getInt("p" + a + "NumGained", 0);
-        formattedString += "\nNumber of zombie cows this player has gained: " + prefs.getInt("p" + a + "ZombiesGained", 0);
+        formattedString += ", Zombie Cows: " + prefs.getInt("p" + a + "Zombies", 0);
+        formattedString += ", Cows this player killed: " + prefs.getInt("p" + a + "NumKilled", 0);
+        formattedString += "\nCows this player has lost: " + prefs.getInt("p" + a + "NumLost", 0);
+        formattedString += ", Cows this player has gained: " + prefs.getInt("p" + a + "NumGained", 0);
+        formattedString += "\nZombie cows this player has gained: " + prefs.getInt("p" + a + "ZombiesGained", 0);
 
         return formattedString;
 
