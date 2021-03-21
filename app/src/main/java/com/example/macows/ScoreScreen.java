@@ -32,6 +32,8 @@ public class ScoreScreen extends AppCompatActivity {
         playerNameLabel = findViewById(R.id.playerNameLabel);
         errorLabel = findViewById(R.id.errorLabel);
         numCowsInField = findViewById(R.id.numCowsInField);
+        numCowsInBarn = findViewById(R.id.numCowsInBarn);
+        numZombieCows = findViewById(R.id.numZombieCows);
 
         //EditText views
         scoreEntry = findViewById(R.id.scoreEntry);
@@ -49,6 +51,7 @@ public class ScoreScreen extends AppCompatActivity {
         police = findViewById(R.id.policeButton);
         stockTrailer = findViewById(R.id.stockTrailerButton);
         funeralHome = findViewById(R.id.funeralHomeButton);
+        resurrectZombieCows = findViewById(R.id.resurrectZombieCows);
         back = findViewById(R.id.scoreScreenToMainMenu);
 
         //Layout
@@ -57,6 +60,8 @@ public class ScoreScreen extends AppCompatActivity {
     }
     private void updateTextViews() {
         numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInField());
+        numCowsInBarn.setText("Cows In Your Barn:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInBarn());
+        numZombieCows.setText("Your Zombie Cows:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getZombieCows());
 
     }
     private void runScoringMethods(int a) {
@@ -121,6 +126,13 @@ public class ScoreScreen extends AppCompatActivity {
         else if (a == 9) {
             //Transition to descoreOtherPlayerScreen
             errorLabel.setText("Transition not currently available");
+
+        }
+        else if (a == 10) {
+            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawRoadKill();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+            updateTextViews();
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
 
         }
 
@@ -307,6 +319,14 @@ public class ScoreScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 runScoringMethods(9);
+
+            }
+
+        });
+        resurrectZombieCows.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(10);
 
             }
 

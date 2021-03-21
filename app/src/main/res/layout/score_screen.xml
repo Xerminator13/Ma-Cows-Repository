@@ -9,6 +9,21 @@
     android:hapticFeedbackEnabled="false">
 
     <TextView
+        android:id="@+id/numZombieCows"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="7dp"
+        android:background="#930000"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numCowsInBarn" />
+
+    <TextView
         android:id="@+id/playerNameLabel"
         android:layout_width="0dp"
         android:layout_height="39dp"
@@ -39,7 +54,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:outlineAmbientShadowColor="#00FFFFFF"
         android:text="Animal Husbandry"
         android:textAlignment="center"
@@ -82,6 +97,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreEntry" />
 
+    <Button
+        android:id="@+id/resurrectZombieCows"
+        android:layout_width="0dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="19dp"
+        android:text="Resurrect Zombie Cows"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numZombieCows" />
+
     <EditText
         android:id="@+id/scoreEntry"
         android:layout_width="0dp"
@@ -112,16 +138,31 @@
         app:layout_constraintTop_toBottomOf="@+id/takeFromBarn" />
 
     <TextView
+        android:id="@+id/numCowsInBarn"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="3dp"
+        android:background="#000000"
+        android:text="TextView"
+        android:textAlignment="viewStart"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stockTrailerButton" />
+
+    <TextView
         android:id="@+id/errorLabel"
         android:layout_width="356dp"
-        android:layout_height="259dp"
+        android:layout_height="100dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
+        app:layout_constraintVertical_bias="0.896" />
 
     <Button
         android:id="@+id/cemeteryButton"
