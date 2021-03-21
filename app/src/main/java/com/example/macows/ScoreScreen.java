@@ -2,6 +2,8 @@ package com.example.macows;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +16,9 @@ public class ScoreScreen extends AppCompatActivity {
     private Button addToField, addToBarn, takeFromBarn, roadKill, resurrectZombieCows, church, police, cemetery, fastFood, stockTrailer, funeralHome, hospital, school, back;
     private EditText scoreEntry;
     private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, herdManagement, animalHusbandry, errorLabel;
+    private View scoreScreenLayout;
+
+    private DisplayMetrics displayMetrics;
 
     //----------------------------------------------------------------------------------------------
 
@@ -37,7 +42,19 @@ public class ScoreScreen extends AppCompatActivity {
         addToField = findViewById(R.id.addToField);
         addToBarn = findViewById(R.id.addToBarn);
         takeFromBarn = findViewById(R.id.takeFromBarn);
+        school = findViewById(R.id.schoolButton);
+        roadKill = findViewById(R.id.roadKillButton);
+        hospital = findViewById(R.id.hospitalButton);
+        church = findViewById(R.id.churchButton);
+        cemetery = findViewById(R.id.cemeteryButton);
+        fastFood = findViewById(R.id.fastFoodButton);
+        police = findViewById(R.id.policeButton);
+        stockTrailer = findViewById(R.id.stockTrailerButton);
+        funeralHome = findViewById(R.id.funeralHomeButton);
         back = findViewById(R.id.scoreScreenToMainMenu);
+
+        //Layout
+        scoreScreenLayout = findViewById(R.id.scoreScreenLayout);
 
     }
     private void updateTextViews() {
@@ -56,7 +73,8 @@ public class ScoreScreen extends AppCompatActivity {
         Log.d("ScoreScreen", "onCreate: started!");
 
         //------------------------------------------------------------------------------------------
-        
+        displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
+
         initAllElements();
         setAllTextViewsToPlayerData(CommonUtils.getCurrentPlayer());
 
