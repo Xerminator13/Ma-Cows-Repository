@@ -22,9 +22,10 @@
 
     <EditText
         android:id="@+id/player3NameInput"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="67dp"
         android:ems="10"
         android:focusable="true"
@@ -38,9 +39,10 @@
 
     <EditText
         android:id="@+id/player2NameInput"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="69dp"
         android:ems="10"
         android:focusable="true"
@@ -54,9 +56,10 @@
 
     <EditText
         android:id="@+id/player1NameInput"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="75dp"
         android:ems="10"
         android:focusable="true"
@@ -70,9 +73,10 @@
 
     <EditText
         android:id="@+id/player6NameInput"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="168dp"
         android:ems="10"
         android:focusable="true"
@@ -89,9 +93,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="75dp"
         android:text="Player 1"
         app:layout_constraintBottom_toBottomOf="@+id/p2Button"
+        app:layout_constraintEnd_toStartOf="@+id/player1NameInput"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -99,9 +105,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="71dp"
         android:text="Player 4"
         app:layout_constraintBottom_toBottomOf="@+id/p5Button"
+        app:layout_constraintEnd_toStartOf="@+id/player4NameInput"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -109,16 +117,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="69dp"
         android:text="Player 3"
         app:layout_constraintBottom_toBottomOf="@+id/p4Button"
+        app:layout_constraintEnd_toStartOf="@+id/player3NameInput"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/player5NameInput"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="80dp"
         android:ems="10"
         android:focusable="true"
@@ -135,9 +146,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="80dp"
         android:text="Player 5"
         app:layout_constraintBottom_toBottomOf="@+id/p6Button"
+        app:layout_constraintEnd_toStartOf="@+id/player5NameInput"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -145,9 +158,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="69dp"
         android:text="Player 2"
         app:layout_constraintBottom_toBottomOf="@+id/p3Button"
+        app:layout_constraintEnd_toStartOf="@+id/player2NameInput"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -155,16 +170,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginBottom="168dp"
         android:text="Player 6"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/player6NameInput"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/player4NameInput"
-        android:layout_width="259dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="70dp"
         android:ems="10"
         android:focusable="true"
@@ -178,19 +196,22 @@
 
     <Button
         android:id="@+id/backButton1"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="48dp"
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/endGameButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/endGameButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="48dp"
         android:text="End Game"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -200,13 +221,15 @@
 
     <Button
         android:id="@+id/allScoresButton"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="3dp"
         android:layout_marginBottom="48dp"
         android:text="All Scores"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/endGameButton" />
 
     <TextView
         android:id="@+id/timerLabel"

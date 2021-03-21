@@ -18,8 +18,6 @@ public class ScoreScreen extends AppCompatActivity {
     private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, herdManagement, animalHusbandry, errorLabel;
     private View scoreScreenLayout;
 
-    private DisplayMetrics displayMetrics;
-
     //----------------------------------------------------------------------------------------------
 
     private void setAllTextViewsToPlayerData(int a) {
@@ -61,6 +59,72 @@ public class ScoreScreen extends AppCompatActivity {
         numCowsInField.setText("Cows In Your Field:  " + CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).getCowsInField());
 
     }
+    private void runScoringMethods(int a) {
+        //School
+        if (a == 1) {
+            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawSchool();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+            updateTextViews();
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+
+
+        }
+        //Road Kill
+        else if (a == 2) {
+            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawRoadKill();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+            updateTextViews();
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+
+        }
+        //Hospital
+        else if (a == 3) {
+            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawHostpital();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+            updateTextViews();
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+
+        }
+        //Church
+        else if (a == 4) {
+            CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1).sawChurch();
+            CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(CommonUtils.getCurrentPlayer() - 1), CommonUtils.getCurrentPlayer() - 1);
+            updateTextViews();
+            errorLabel.setText(CommonUtils.formatPlayerPrefs(CommonUtils.getCurrentPlayer()));
+
+        }
+        //Cemetery
+        else if (a == 5) {
+            //Transition to descoreOtherPlayerScreen
+            errorLabel.setText("Transition not currently available");
+
+        }
+        //Fast Food
+        else if (a == 6) {
+            //Transition to descoreOtherPlayerScreen
+            errorLabel.setText("Transition not currently available");
+
+        }
+        //Police
+        else if (a == 7) {
+            //Transition to descoreOtherPlayerScreen
+            errorLabel.setText("Transition not currently available");
+
+        }
+        //Stock Trailer
+        else if (a == 8) {
+            //Transition to descoreOtherPlayerScreen
+            errorLabel.setText("Transition not currently available");
+
+        }
+        //Funeral Home
+        else if (a == 9) {
+            //Transition to descoreOtherPlayerScreen
+            errorLabel.setText("Transition not currently available");
+
+        }
+
+    }
     //According to Stackoverflow, this is the fastest way to find out if a string is an integer
     //https://stackoverflow.com/questions/237159/whats-the-best-way-to-check-if-a-string-represents-an-integer-in-java
 
@@ -73,7 +137,6 @@ public class ScoreScreen extends AppCompatActivity {
         Log.d("ScoreScreen", "onCreate: started!");
 
         //------------------------------------------------------------------------------------------
-        displayMetrics = getApplicationContext().getResources().getDisplayMetrics();
 
         initAllElements();
         setAllTextViewsToPlayerData(CommonUtils.getCurrentPlayer());
@@ -83,7 +146,8 @@ public class ScoreScreen extends AppCompatActivity {
         addToField.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
-                if (input1 != null && input1 != "") {
+
+                if (input1 != null && input1.length() > 0) {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
@@ -110,7 +174,8 @@ public class ScoreScreen extends AppCompatActivity {
         addToBarn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
-                if (input1 != null && input1 != "") {
+
+                if (input1 != null && input1.length() > 0) {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
@@ -143,7 +208,8 @@ public class ScoreScreen extends AppCompatActivity {
         takeFromBarn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
-                if (input1 != null && input1 != "") {
+
+                if (input1 != null && input1.length() > 0) {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
@@ -169,6 +235,78 @@ public class ScoreScreen extends AppCompatActivity {
                     errorLabel.setText("You did not input a whole number of cows, please try again.");
 
                 }
+
+            }
+
+        });
+        school.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(1);
+
+            }
+
+        });
+        roadKill.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(2);
+
+            }
+
+        });
+        hospital.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(3);
+
+            }
+
+        });
+        church.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(4);
+
+            }
+
+        });
+        cemetery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(5);
+
+            }
+
+        });
+        fastFood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(6);
+
+            }
+
+        });
+        police.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(7);
+
+            }
+
+        });
+        stockTrailer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(8);
+
+            }
+
+        });
+        funeralHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                runScoringMethods(9);
 
             }
 

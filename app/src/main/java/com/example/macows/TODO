@@ -6,9 +6,9 @@ Build functioning application that can be player with base game:
    - Create transitions for the onClick functions to make the buttons work when the activities are created
 
  - ScoreScreen:
-  > Layout all elements on the screen and set constraints
-   - Includes all score/descore buttons, EditText field, TextViews for labels and score reporting, and back button
-  > Add onEditListener for EditText field for adding to player score
+  ? Add other text fields to updateTextView() for the method to work properly
+  ? Add resurrectCows Button, cowsInBarn TextView, and zombieCows TextView as UI elements
+   - Initialize them under initAllElements()
   > Add onClickListeners for all scoring and descoring buttons and implement ability to edit player score
   > Add transition from ScoreScreen to MainMenu with onClickListener for the back button
   > Implement error labeling and all cow jokes
