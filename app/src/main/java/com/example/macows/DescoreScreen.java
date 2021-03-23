@@ -21,11 +21,11 @@ public class DescoreScreen extends AppCompatActivity {
     private TextView p1Field, p1Barn, p2Field, p2Barn, p3Field, p3Barn, p4Field, p4Barn, p5Field, p5Barn;
     private TextView label, errorLabeling;
 
-    int currentPlayer = CommonUtils.getCurrentPlayer(); //This returns the index of the player + 1
-    int numCowsKilledBefore = CommonUtils.playerList.get(currentPlayer - 1).getNumCowsKilled();
-    int numCowsKilledAfter = numCowsKilledBefore;
-    int playerTakenFrom = -1; //This represents the index of the player + 1
-    int descoreMethod = CommonUtils.getDescoreMethod();
+    int currentPlayer;
+    int currentDescoreMethod;
+    int numCowsKilledBefore;
+    int numCowsKilledAfter;
+    int playerTakenFrom;
 
     //----------------------------------------------------------------------------------------------
 
@@ -48,6 +48,7 @@ public class DescoreScreen extends AppCompatActivity {
 
         //TextViews
         errorLabeling = findViewById(R.id.errorLabeling);
+        label = findViewById(R.id.descoreMethodLabel);
         p1Field = findViewById(R.id.player1FieldView);
         p1Barn = findViewById(R.id.player1BarnView);
         p2Field = findViewById(R.id.player2FieldView);
@@ -72,9 +73,38 @@ public class DescoreScreen extends AppCompatActivity {
 
 
     }
+    private void populateDescoreLabelText() {
+        if (currentDescoreMethod == 1) {
+            //Cemetery
+            label.setText("Cemetery");
+
+        }
+        else if (currentDescoreMethod == 2) {
+            //Fast Food
+            label.setText("Fast Food");
+
+        }
+        else if (currentDescoreMethod == 3) {
+            //Police
+            label.setText("Police");
+
+        }
+        else if (currentDescoreMethod == 4) {
+            //Stock Trailer
+            label.setText("Stock Trailer");
+
+        }
+        else if (currentDescoreMethod == 5) {
+            //funeral Home
+            label.setText("Funeral Home");
+
+        }
+
+    }
     private void populateTextViews() {
         //Populate text views here
         errorLabeling.setText("No player has been selected yet!!");
+        populateDescoreLabelText();
 
         //Buttons;  Extra code for naming the buttons with player names
         int b = 0;
@@ -84,15 +114,6 @@ public class DescoreScreen extends AppCompatActivity {
                 b++;
 
             }
-            else {
-                Log.d("PopulateList", "Skipped index" + b);
-
-            }
-
-        }
-
-        for (int a : players) {
-            System.out.println(a);
 
         }
 
@@ -120,35 +141,35 @@ public class DescoreScreen extends AppCompatActivity {
 
         }
         else {
-            if (descoreMethod == 1) {
+            if (currentDescoreMethod == 1) {
                 //Cemetery
                 CommonUtils.playerList.get(currentPlayer - 1).sawCemetery(CommonUtils.playerList.get(a));
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(a), a);
 
             }
-            else if (descoreMethod == 2) {
+            else if (currentDescoreMethod == 2) {
                 //Fast Food
                 CommonUtils.playerList.get(currentPlayer - 1).sawFastFood(CommonUtils.playerList.get(a));
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(a), a);
 
             }
-            else if (descoreMethod == 3) {
+            else if (currentDescoreMethod == 3) {
                 //Police
                 CommonUtils.playerList.get(currentPlayer - 1).sawPolice(CommonUtils.playerList.get(a));
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(a), a);
 
             }
-            else if (descoreMethod == 4) {
+            else if (currentDescoreMethod == 4) {
                 //Stock Trailer
                 CommonUtils.playerList.get(currentPlayer - 1).sawStockTrailer(CommonUtils.playerList.get(a));
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(a), a);
 
             }
-            else if (descoreMethod == 5) {
+            else if (currentDescoreMethod == 5) {
                 //funeral Home
                 CommonUtils.playerList.get(currentPlayer - 1).sawFuneralHome(CommonUtils.playerList.get(a));
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
@@ -169,6 +190,14 @@ public class DescoreScreen extends AppCompatActivity {
         setContentView(R.layout.descore_screen);
         Log.d("DescoreScreen", "onCreate: started!");
 
+        //##########################################################################################
+
+        currentDescoreMethod = CommonUtils.getDescoreMethod();
+        currentPlayer = CommonUtils.getCurrentPlayer(); //This returns the index of the player + 1
+        playerTakenFrom = -1; //This represents the index of the player + 1
+
+        numCowsKilledBefore = CommonUtils.playerList.get(currentPlayer - 1).getNumCowsKilled();
+
         //******************************************************************************************
 
         initAllElements();
@@ -181,6 +210,8 @@ public class DescoreScreen extends AppCompatActivity {
                 public void onClick(View v) {
                     playerTakenFrom = players[zA] + 1;
                     errorLabeling.setText("You are taking cows from " + CommonUtils.playerList.get(players[zA]).getName());
+                    currentDescoreMethod = CommonUtils.getDescoreMethod();
+                    populateDescoreLabelText();
 
                 }
 
@@ -204,7 +235,8 @@ public class DescoreScreen extends AppCompatActivity {
                     String msg = CommonUtils.playerList.get(currentPlayer - 1).getName()
                             + " killed " + numCowsKilledAfter + " of " + CommonUtils.playerList.get(playerTakenFrom - 1).getName()
                             + "'s cows.";
-                    CommonUtils.setDescoreErrorMessage(msg);
+                    CommonUtils.setDescoreErrorMessage(msg + ":  " + currentDescoreMethod);
+                    CommonUtils.setDescoreMethod(currentDescoreMethod);
                     startActivity(new Intent(DescoreScreen.this, ScoreScreen.class));
 
                 }

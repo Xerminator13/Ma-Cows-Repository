@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/confirmationButton"
         android:layout_width="0dp"
-        android:layout_height="111dp"
+        android:layout_height="100dp"
         android:layout_marginBottom="15dp"
         android:backgroundTint="#000000"
         android:text="Descore!!"
@@ -52,10 +52,10 @@
         android:layout_width="110dp"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="10dp"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/descoreMethodLabel" />
 
     <TextView
         android:id="@+id/player1BarnView"
@@ -241,7 +241,7 @@
         android:layout_width="0dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="#FFFFFF"
         android:backgroundTint="#326134"
@@ -250,6 +250,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/player1ConfirmButton"
+        app:layout_constraintTop_toBottomOf="@+id/descoreMethodLabel" />
+
+    <TextView
+        android:id="@+id/descoreMethodLabel"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -233,6 +233,7 @@ public class Player {
 
     }
     public void sawCemetery(Player other) {
+        this.numCowsKilled += other.getCowsInField();
         other.addNumCowsLost(other.getCowsInField());
         other.setCowsInField(0);
 
@@ -240,14 +241,17 @@ public class Player {
     public void sawFastFood(Player other) {
         other.addNumCowsLost(2);
         other.takeCowsFromField(2);
+        this.numCowsKilled += 2;
 
     }
     public void sawStockTrailer(Player other) {
         other.addNumCowsLost(10);
         other.takeCowsFromField(10);
+        this.numCowsKilled += 10;
 
     }
     public void sawFuneralHome(Player other) {
+        this.numCowsKilled += (int)(other.getCowsInField()/2.0);
         other.addNumCowsLost((int)(other.getCowsInField()/2.0));
         other.takeCowsFromField((int)(other.getCowsInField()/2.0));
 

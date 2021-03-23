@@ -98,36 +98,6 @@ public class ScoreScreen extends AppCompatActivity {
             errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
-        //Cemetery
-        else if (a == 5) {
-            CommonUtils.setDescoreMethod(1);
-            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-
-        }
-        //Fast Food
-        else if (a == 6) {
-            CommonUtils.setDescoreMethod(2);
-            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-
-        }
-        //Police
-        else if (a == 7) {
-            CommonUtils.setDescoreMethod(3);
-            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-
-        }
-        //Stock Trailer
-        else if (a == 8) {
-            CommonUtils.setDescoreMethod(4);
-            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-
-        }
-        //Funeral Home
-        else if (a == 9) {
-            CommonUtils.setDescoreMethod(5);
-            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-
-        }
         //Resurrect Zombie Cows
         else if (a == 10) {
             String error = CommonUtils.playerList.get(currentPlayer - 1).resurrectZombieCows();
@@ -288,7 +258,9 @@ public class ScoreScreen extends AppCompatActivity {
         cemetery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                runScoringMethods(5);
+                CommonUtils.setDescoreMethod(1);
+                System.out.println(CommonUtils.getDescoreMethod());
+                startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
 
             }
 
@@ -296,7 +268,9 @@ public class ScoreScreen extends AppCompatActivity {
         fastFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                runScoringMethods(6);
+                CommonUtils.setDescoreMethod(2);
+                System.out.println(CommonUtils.getDescoreMethod());
+                startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
 
             }
 
@@ -304,7 +278,9 @@ public class ScoreScreen extends AppCompatActivity {
         police.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                runScoringMethods(7);
+                CommonUtils.setDescoreMethod(3);
+                System.out.println(CommonUtils.getDescoreMethod());
+                startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
 
             }
 
@@ -312,7 +288,9 @@ public class ScoreScreen extends AppCompatActivity {
         stockTrailer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                runScoringMethods(8);
+                CommonUtils.setDescoreMethod(4);
+                System.out.println(CommonUtils.getDescoreMethod());
+                startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
 
             }
 
@@ -320,7 +298,9 @@ public class ScoreScreen extends AppCompatActivity {
         funeralHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                runScoringMethods(9);
+                CommonUtils.setDescoreMethod(5);
+                System.out.println(CommonUtils.getDescoreMethod());
+                startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
 
             }
 
