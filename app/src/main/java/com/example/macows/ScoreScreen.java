@@ -18,7 +18,7 @@ public class ScoreScreen extends AppCompatActivity {
     private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, herdManagement, animalHusbandry, errorLabel;
     private View scoreScreenLayout;
 
-    private int currentPlayer = 1;
+    private int currentPlayer = CommonUtils.getCurrentPlayer();
 
     //----------------------------------------------------------------------------------------------
 
