@@ -61,7 +61,7 @@ public class ScoreScreen extends AppCompatActivity {
         numCowsInBarn.setText("Cows In Your Barn:  " + CommonUtils.playerList.get(currentPlayer - 1).getCowsInBarn());
         numZombieCows.setText("Your Zombie Cows:  " + CommonUtils.playerList.get(currentPlayer - 1).getZombieCows());
 
-        errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+        errorLabel.setText(CommonUtils.getDescoreErrorMessage());
 
     }
     private void runScoringMethods(int a) {
