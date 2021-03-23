@@ -62,6 +62,7 @@ public class CommonUtils {
         * 5 = Funeral Home
         */
         editor.putInt("descoreMethod", 1);
+        editor.putString("descoreErrorMessage", "Descored...");
 
         editor.commit();
 
@@ -75,12 +76,20 @@ public class CommonUtils {
         editor.putInt("descoreMethod", a);
 
     }
+    public static void setDescoreErrorMessage(String msg) {
+        editor.putString("descoreErrorMessage", msg);
+
+    }
     public static int getCurrentPlayer() {
         return prefs.getInt("currentPlayer", 1);
 
     }
     public static int getDescoreMethod() {
         return prefs.getInt("descoreMethod", 1);
+
+    }
+    public static String getDescoreErrorMessage() {
+        return prefs.getString("descoreErrorMessage", "Descored...");
 
     }
 
@@ -162,6 +171,17 @@ public class CommonUtils {
             editor.putInt("p" + a + "ZombiesGained", 0);
 
         }
+
+        editor.putInt("currentPlayer", 1);
+        /*
+         * 1 = Cemetery
+         * 2 = Fast Food
+         * 3 = Police
+         * 4 = Stock Trailer
+         * 5 = Funeral Home
+         */
+        editor.putInt("descoreMethod", 1);
+        editor.putString("descoreErrorMessage", "Descored...");
 
         editor.commit();
 
