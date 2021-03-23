@@ -6,14 +6,12 @@ Build functioning application that can be player with base game:
    - Create transitions for the onClick functions to make the buttons work when the activities are created
 
  - ScoreScreen:
-  ? Add other text fields to updateTextView() for the method to work properly
-  ? Add resurrectCows Button, cowsInBarn TextView, and zombieCows TextView as UI elements
-   - Initialize them under initAllElements()
-  > Add onClickListeners for all scoring and descoring buttons and implement ability to edit player score
+  > Implement DescoreScreen (see below)
+  > Add transition from scoreScreen to DescoreScreen in the runScoringMethods method
   > Add transition from ScoreScreen to MainMenu with onClickListener for the back button
   > Implement error labeling and all cow jokes
 
- - TakeCowsScreen:
+ - DescoreScreen:
   > Create new activity and add to AndroidManifest.xml
    - Remember to change the setContentView(R.layout.xml_file_name) so that it renders the correct layout
   > Layout all elements and set constraints

@@ -47,6 +47,19 @@
                 />
         </activity>
 
+        <!--This is the Descore Screen-->
+        <activity
+            android:name=".DescoreScreen"
+            android:screenOrientation="portrait"
+            android:label="Descore Screen"
+            android:parentActivityName=".ScoreScreen"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.macows.DescoreScreen"
+                />
+        </activity>
+
     </application>
 
 </manifest>

@@ -100,32 +100,32 @@ public class ScoreScreen extends AppCompatActivity {
         }
         //Cemetery
         else if (a == 5) {
-            //Transition to descoreOtherPlayerScreen
-            errorLabel.setText("Transition not currently available");
+            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
+            errorLabel.setText("Transitioning...");
 
         }
         //Fast Food
         else if (a == 6) {
-            //Transition to descoreOtherPlayerScreen
-            errorLabel.setText("Transition not currently available");
+            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
+            errorLabel.setText("Transitioning...");
 
         }
         //Police
         else if (a == 7) {
-            //Transition to descoreOtherPlayerScreen
-            errorLabel.setText("Transition not currently available");
+            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
+            errorLabel.setText("Transitioning...");
 
         }
         //Stock Trailer
         else if (a == 8) {
-            //Transition to descoreOtherPlayerScreen
-            errorLabel.setText("Transition not currently available");
+            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
+            errorLabel.setText("Transitioning...");
 
         }
         //Funeral Home
         else if (a == 9) {
-            //Transition to descoreOtherPlayerScreen
-            errorLabel.setText("Transition not currently available");
+            startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
+            errorLabel.setText("Transitioning...");
 
         }
         else if (a == 10) {
