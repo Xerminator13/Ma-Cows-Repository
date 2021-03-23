@@ -100,34 +100,35 @@ public class ScoreScreen extends AppCompatActivity {
         }
         //Cemetery
         else if (a == 5) {
+            CommonUtils.setDescoreMethod(1);
             startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-            errorLabel.setText("Transitioning...");
 
         }
         //Fast Food
         else if (a == 6) {
+            CommonUtils.setDescoreMethod(2);
             startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-            errorLabel.setText("Transitioning...");
 
         }
         //Police
         else if (a == 7) {
+            CommonUtils.setDescoreMethod(3);
             startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-            errorLabel.setText("Transitioning...");
 
         }
         //Stock Trailer
         else if (a == 8) {
+            CommonUtils.setDescoreMethod(4);
             startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-            errorLabel.setText("Transitioning...");
 
         }
         //Funeral Home
         else if (a == 9) {
+            CommonUtils.setDescoreMethod(5);
             startActivity(new Intent(ScoreScreen.this, DescoreScreen.class));
-            errorLabel.setText("Transitioning...");
 
         }
+        //Resurrect Zombie Cows
         else if (a == 10) {
             String error = CommonUtils.playerList.get(currentPlayer - 1).resurrectZombieCows();
             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);

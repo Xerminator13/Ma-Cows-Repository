@@ -2,27 +2,23 @@ This is a document detailing all of the features needed to be added to the app f
 
 Build functioning application that can be player with base game:
  - MainMenu:
-  > Add onClickListeners for Player buttons 1-6, endGame button, and allScoresButton
+  > Add onClickListeners for endGame button and allScoresButton
    - Create transitions for the onClick functions to make the buttons work when the activities are created
 
  - ScoreScreen:
-  > Implement DescoreScreen (see below)
-  > Add transition from scoreScreen to DescoreScreen in the runScoringMethods method
-  > Add transition from ScoreScreen to MainMenu with onClickListener for the back button
-  > Implement error labeling and all cow jokes
+  > Implement all cow jokes
 
  - DescoreScreen:
-  > Create new activity and add to AndroidManifest.xml
-   - Remember to change the setContentView(R.layout.xml_file_name) so that it renders the correct layout
   > Layout all elements and set constraints
-   - Includes TextViews for labels, dropdown menus for descoring, confirm descore button, and back button
-  > Add onClickListener for confirmation button
-  > Add transition from TakeCowsScreen to ScoreScreen with onClickListener for back button
-  > Figure out how to use drop down menus to identify players
-   - If that is too difficult, implementing buttons should not be that bad...
+   - Includes TextViews for labels and basic player stats, buttons for identifying the player to be descored, confirm descore button, and back button
+  > Add transition from DescoreScreen to ScoreScreen with onClickListener for back button
+  > I am choosing to have 5 buttons to identify the player to be taken from instead
+   - I also want to have basic score data for all other players so that the person descoring another player can make better decisions about who to descore
+  >Read all comments to make sure you did not miss anything you commented to do in the class lol
 
  - AllScoresScreen:
   > Create new activity and add to AndroidManifest.xml
+   - Create new xml file for the layout and edit the setContentView method to match the name of the layout xml file
   > Implement scrolling container to hold all elements
   > Layout all elements and set constraints
    - this includes TextViews for name labels, Field scores, barn scores, and zombie scores for all players,
@@ -32,6 +28,7 @@ Build functioning application that can be player with base game:
 
  - EndGameScreen:
   > Create activity and add to AndroidManifest.xml
+   - Create new xml file for the layout and edit the setContentView method to match the name of the layout xml file
   > Layout all elements and set constraints
    - This includes a TextView to display name of winner, back button, and play again button
   > Add delete action using onClickListener for play again button
@@ -40,12 +37,17 @@ Build functioning application that can be player with base game:
 
  - RulesScreen:
   > Create activity and add to AndroidManifest.xml
+   - Create new xml file for the layout and edit the setContentView method to match the name of the layout xml file
   > Layout all elements and set constraints
    - this includes one TextView and a back button
-   - There is an attribute for TextViews called nestedScrollingEnabled that you will need to mkae true for the rules TextView
+   - There is an attribute for TextViews called nestedScrollingEnabled that you will need to make true for the rules TextView
   > Add transition from RulesScreen to MainActivity with onClickListener for back button
 
 New features for enhanced game play:
+ - Implement Dark Mode
+  > Go back and figure out how to edit UI attributes in code to change colors to make sure that it is easy on the eyes
+   - Base colors should be ok for a while but I want to have a dark mode just for the appeal
+
  - ChooseTimeScreen:
   > Create new activity and add to AndroidManifest.xml
   > Layout all elements and set constraints

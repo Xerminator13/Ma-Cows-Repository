@@ -54,18 +54,36 @@ public class CommonUtils {
         }
 
         editor.putInt("currentPlayer", 1);
+        /*
+        * 1 = Cemetery
+        * 2 = Fast Food
+        * 3 = Police
+        * 4 = Stock Trailer
+        * 5 = Funeral Home
+        */
+        editor.putInt("descoreMethod", 1);
 
         editor.commit();
 
     }
+
     public static void setCurrentPlayer(int player) {
         editor.putInt("currentPlayer", player);
+
+    }
+    public static void setDescoreMethod(int a) {
+        editor.putInt("descoreMethod", a);
 
     }
     public static int getCurrentPlayer() {
         return prefs.getInt("currentPlayer", 1);
 
     }
+    public static int getDescoreMethod() {
+        return prefs.getInt("descoreMethod", 1);
+
+    }
+
     public static void updateAllPlayerPreferences(ArrayList<Player> playerList) {
         int a = 1;
 
