@@ -73,6 +73,19 @@
                 />
         </activity>
 
+        <!--This is the EndGameScreen-->
+        <activity
+            android:name=".EndGameScreen"
+            android:screenOrientation="portrait"
+            android:label="End Game Screen"
+            android:parentActivityName=".MainMenu"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.macows.EndGameScreen"
+                />
+        </activity>
+
     </application>
 
 </manifest>

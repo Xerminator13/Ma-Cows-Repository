@@ -1,0 +1,46 @@
+package com.example.macows;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class EndGameScreen extends AppCompatActivity {
+    private TextView winningPlayerLabel;
+    private Button restartGame, continueGame;
+
+    //----------------------------------------------------------------------------------------------
+
+    private void initAllElements() {
+
+
+    }
+    private void findWinningPlayer() {
+
+
+    }
+    private void populateAllElements() {
+
+
+    }
+
+    //**********************************************************************************************
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.end_game_screen);
+        Log.d("EndGameScreen", "onCreate: started!");
+
+        //==========================================================================================
+
+        initAllElements();
+        findWinningPlayer();
+        populateAllElements();
+
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    }
+
+}

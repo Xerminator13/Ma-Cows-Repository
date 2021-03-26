@@ -1,26 +1,16 @@
 This is a document detailing all of the features needed to be added to the app from greatest to least importance
 
 Build functioning application that can be player with base game:
- - MainMenu:
-  > Add onClickListeners for endGame button and allScoresButton
-   - Create transitions for the onClick functions to make the buttons work when the activities are created
+ - MainMenu: DONE!
 
  - ScoreScreen:
   > Implement all cow jokes
 
  - DescoreScreen: DONE!
 
- - AllScoresScreen:
-  > Implement scrolling container to hold all elements
-  > Layout all elements and set constraints
-   - this includes TextViews for name labels, Field scores, barn scores, and zombie scores for all players,
-        42 TextViews in total, and a back button at the top and bottom of the screen.
-        Or, figure out a better way to handle score reporting
-  > Add transition from AllScoresScreen to MainMenu using onClickListener for both back buttons
+ - AllScoresScreen: DONE!  See additional planned changes below.
 
  - EndGameScreen:
-  > Create activity and add to AndroidManifest.xml
-   - Create new xml file for the layout and edit the setContentView method to match the name of the layout xml file
   > Layout all elements and set constraints
    - This includes a TextView to display name of winner, back button, and play again button
   > Add delete action using onClickListener for play again button
