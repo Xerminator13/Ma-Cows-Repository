@@ -377,7 +377,7 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
-        android:text="All Scores Screen"
+        android:text="@string/all_scores_screen_label"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textColorHighlight="#FFFFFF"
@@ -408,7 +408,7 @@
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginTop="66dp"
-        android:text="Back"
+        android:text="@string/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/p6InBarnLabel" />

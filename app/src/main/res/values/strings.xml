@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ma\' Cows</string>
+    <string name="all_scores_screen_label">All Scores Screen</string>
+    <string name="back_button">Back</string>
+    <string name="descore_button">Descore!!</string>
+    <string name="cancel_button">Cancel</string>
+
 </resources>
