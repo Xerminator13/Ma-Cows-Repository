@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button goToMainMenu, resetScores, populate;
-    private EditText scoreEntry;
-    private TextView displayText;
 
     private static Context mContext;
     private SharedPreferences prefs;

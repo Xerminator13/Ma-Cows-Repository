@@ -170,7 +170,7 @@ public class MainMenu extends AppCompatActivity {
         });
         allScoresButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //Transition to AllScoresScreen
+                startActivity(new Intent(MainMenu.this, AllScoresScreen.class));
 
             }
 
