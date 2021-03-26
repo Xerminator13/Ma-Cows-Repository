@@ -1,15 +1,416 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#30877A">
 
     <TextView
-        android:id="@+id/allScoresScreenLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/p6NameLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
         android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="12dp" />
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p5InBarnLabel" />
+
+    <TextView
+        android:id="@+id/p6InBarnLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#BC1414"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1ZombiesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InFieldLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p6NameLabel" />
+
+    <TextView
+        android:id="@+id/p6ZombiesLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InBarnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p6NameLabel" />
+
+    <TextView
+        android:id="@+id/p6InFieldLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#4CAF50"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1InBarnLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p6NameLabel" />
+
+    <TextView
+        android:id="@+id/p5NameLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p4InBarnLabel" />
+
+    <TextView
+        android:id="@+id/p5InBarnLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#BC1414"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1ZombiesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InFieldLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p5NameLabel" />
+
+    <TextView
+        android:id="@+id/p5ZombiesLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InBarnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p5NameLabel" />
+
+    <TextView
+        android:id="@+id/p5InFieldLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#4CAF50"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1InBarnLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p5NameLabel" />
+
+    <TextView
+        android:id="@+id/p4NameLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p3InBarnLabel" />
+
+    <TextView
+        android:id="@+id/p4InBarnLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#BC1414"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1ZombiesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InFieldLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p4NameLabel" />
+
+    <TextView
+        android:id="@+id/p4ZombiesLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InBarnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p4NameLabel" />
+
+    <TextView
+        android:id="@+id/p4InFieldLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#4CAF50"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1InBarnLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p4NameLabel" />
+
+    <TextView
+        android:id="@+id/p3NameLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p2InBarnLabel" />
+
+    <TextView
+        android:id="@+id/p3InBarnLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#BC1414"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1ZombiesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InFieldLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p3NameLabel" />
+
+    <TextView
+        android:id="@+id/p3ZombiesLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InBarnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p3NameLabel" />
+
+    <TextView
+        android:id="@+id/p3InFieldLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#4CAF50"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1InBarnLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p3NameLabel" />
+
+    <TextView
+        android:id="@+id/p2NameLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="15dp"
+        android:background="#000000"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p1InBarnLabel" />
+
+    <TextView
+        android:id="@+id/p2InBarnLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#BC1414"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1ZombiesLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InFieldLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p2NameLabel" />
+
+    <TextView
+        android:id="@+id/p2ZombiesLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/p1InBarnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p2NameLabel" />
+
+    <TextView
+        android:id="@+id/p2InFieldLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#4CAF50"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1InBarnLabel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p2NameLabel" />
+
+    <TextView
+        android:id="@+id/p1ZombiesLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:background="#673AB7"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/p1InBarnLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p1NameLabel" />
+
+    <TextView
+        android:id="@+id/p1InBarnLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#BC1414"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1ZombiesLabel"
+        app:layout_constraintStart_toEndOf="@+id/p1InFieldLabel"
+        app:layout_constraintTop_toBottomOf="@+id/p1NameLabel" />
+
+    <TextView
+        android:id="@+id/p1InFieldLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="#4CAF50"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/p1InBarnLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p1NameLabel" />
+
+    <TextView
+        android:id="@+id/allScoresScreenLabel"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:text="All Scores Screen"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/p1NameLabel"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:background="#000000"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allScoresScreenLabel" />
+
+    <Button
+        android:id="@+id/backToMainMenuFromAllscoresScreen"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="66dp"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p6InBarnLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

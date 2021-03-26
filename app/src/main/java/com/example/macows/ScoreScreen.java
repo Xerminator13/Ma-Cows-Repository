@@ -15,8 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ScoreScreen extends AppCompatActivity {
     private Button addToField, addToBarn, takeFromBarn, roadKill, resurrectZombieCows, church, police, cemetery, fastFood, stockTrailer, funeralHome, hospital, school, back;
     private EditText scoreEntry;
-    private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, herdManagement, animalHusbandry, errorLabel;
-    private View scoreScreenLayout;
+    private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, errorLabel;
 
     private int currentPlayer = CommonUtils.getCurrentPlayer();
 
@@ -48,9 +47,6 @@ public class ScoreScreen extends AppCompatActivity {
         funeralHome = findViewById(R.id.funeralHomeButton);
         resurrectZombieCows = findViewById(R.id.resurrectZombieCows);
         back = findViewById(R.id.scoreScreenToMainMenu);
-
-        //Layout
-        scoreScreenLayout = findViewById(R.id.scoreScreenLayout);
 
     }
     private void updateTextViews(int a) {
@@ -121,7 +117,6 @@ public class ScoreScreen extends AppCompatActivity {
 
         //------------------------------------------------------------------------------------------
 
-        currentPlayer = currentPlayer;
         initAllElements();
         updateTextViews(currentPlayer);
 

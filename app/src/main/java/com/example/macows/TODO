@@ -36,6 +36,7 @@ Build functioning application that can be player with base game:
   > Add transition from RulesScreen to MainActivity with onClickListener for back button
 
 New features for enhanced game play:
+ - Add more player data ui elements to the AllScoresScreen layout
  - Implement Dark Mode
   > Go back and figure out how to edit UI attributes in code to change colors to make sure that it is easy on the eyes
    - Base colors should be ok for a while but I want to have a dark mode just for the appeal
