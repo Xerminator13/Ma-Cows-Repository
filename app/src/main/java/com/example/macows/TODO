@@ -8,13 +8,7 @@ Build functioning application that can be player with base game:
  - ScoreScreen:
   > Implement all cow jokes
 
- - DescoreScreen:
-  > Layout all elements and set constraints
-   - Includes TextViews for labels and basic player stats, buttons for identifying the player to be descored, confirm descore button, and back button
-  > Add transition from DescoreScreen to ScoreScreen with onClickListener for back button
-  > I am choosing to have 5 buttons to identify the player to be taken from instead
-   - I also want to have basic score data for all other players so that the person descoring another player can make better decisions about who to descore
-  >Read all comments to make sure you did not miss anything you commented to do in the class lol
+ - DescoreScreen: DONE!
 
  - AllScoresScreen:
   > Create new activity and add to AndroidManifest.xml

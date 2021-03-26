@@ -70,14 +70,17 @@ public class CommonUtils {
 
     public static void setCurrentPlayer(int player) {
         editor.putInt("currentPlayer", player);
+        editor.commit();
 
     }
     public static void setDescoreMethod(int a) {
         editor.putInt("descoreMethod", a);
+        editor.commit();
 
     }
     public static void setDescoreErrorMessage(String msg) {
         editor.putString("descoreErrorMessage", msg);
+        editor.commit();
 
     }
     public static int getCurrentPlayer() {

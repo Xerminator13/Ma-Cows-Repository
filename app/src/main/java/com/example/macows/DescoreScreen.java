@@ -125,8 +125,9 @@ public class DescoreScreen extends AppCompatActivity {
 
         b = 0;
         for (int a = 0; a < textViewList.size(); a += 2) {
-            textViewList.get(a).setText("Cows in field:  " + CommonUtils.playerList.get(b).getCowsInField());
-            textViewList.get(a + 1).setText("Cows in barn:  " + CommonUtils.playerList.get(b).getCowsInBarn());
+            textViewList.get(a).setText("Cows in field:  " + CommonUtils.playerList.get(players[b]).getCowsInField());
+            textViewList.get(a + 1).setText("Cows in barn:  " + CommonUtils.playerList.get(players[b]).getCowsInBarn());
+
             b++;
 
         }
@@ -235,8 +236,7 @@ public class DescoreScreen extends AppCompatActivity {
                     String msg = CommonUtils.playerList.get(currentPlayer - 1).getName()
                             + " killed " + numCowsKilledAfter + " of " + CommonUtils.playerList.get(playerTakenFrom - 1).getName()
                             + "'s cows.";
-                    CommonUtils.setDescoreErrorMessage(msg + ":  " + currentDescoreMethod);
-                    CommonUtils.setDescoreMethod(currentDescoreMethod);
+                    CommonUtils.setDescoreErrorMessage(msg);
                     startActivity(new Intent(DescoreScreen.this, ScoreScreen.class));
 
                 }
