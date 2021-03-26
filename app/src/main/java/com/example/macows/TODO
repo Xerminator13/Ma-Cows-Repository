@@ -11,8 +11,6 @@ Build functioning application that can be player with base game:
  - DescoreScreen: DONE!
 
  - AllScoresScreen:
-  > Create new activity and add to AndroidManifest.xml
-   - Create new xml file for the layout and edit the setContentView method to match the name of the layout xml file
   > Implement scrolling container to hold all elements
   > Layout all elements and set constraints
    - this includes TextViews for name labels, Field scores, barn scores, and zombie scores for all players,

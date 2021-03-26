@@ -60,6 +60,19 @@
                 />
         </activity>
 
+        <!--This is the AllScoresScreen-->
+        <activity
+            android:name=".AllScoresScreen"
+            android:screenOrientation="portrait"
+            android:label="All Scores Screen"
+            android:parentActivityName=".MainMenu"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.macows.AllScoresScreen"
+                />
+        </activity>
+
     </application>
 
 </manifest>
