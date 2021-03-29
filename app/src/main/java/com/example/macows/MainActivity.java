@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button goToMainMenu, resetScores, populate;
@@ -110,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
                     CommonUtils.playerList.get(a).setNumCowsLost((int)(Math.random()*87864));
 
                 }
+
+                CommonUtils.updateAllPlayerPreferences(CommonUtils.playerList);
 
             }
 
