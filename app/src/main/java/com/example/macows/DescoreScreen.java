@@ -26,6 +26,7 @@ public class DescoreScreen extends AppCompatActivity {
     int numCowsKilledBefore;
     int numCowsKilledAfter;
     int playerTakenFrom;
+    int numCowsBefore, numCowsAfter;
 
     //----------------------------------------------------------------------------------------------
 
@@ -198,6 +199,7 @@ public class DescoreScreen extends AppCompatActivity {
         playerTakenFrom = -1; //This represents the index of the player + 1
 
         numCowsKilledBefore = CommonUtils.playerList.get(currentPlayer - 1).getNumCowsKilled();
+        numCowsBefore = CommonUtils.playerList.get(currentPlayer - 1).getCowsInField();
 
         //******************************************************************************************
 
@@ -232,10 +234,23 @@ public class DescoreScreen extends AppCompatActivity {
                 //If a player was selected, then that player will be descored
                 //  and the screen will transition back with an error message confirming the descore
                 if (shouldTransition) {
+                    String msg;
+
                     numCowsKilledAfter = CommonUtils.playerList.get(currentPlayer - 1).getNumCowsKilled() - numCowsKilledBefore;
-                    String msg = CommonUtils.playerList.get(currentPlayer - 1).getName()
-                            + " killed " + numCowsKilledAfter + " of " + CommonUtils.playerList.get(playerTakenFrom - 1).getName()
-                            + "'s cows.";
+                    numCowsAfter = CommonUtils.playerList.get(currentPlayer - 1).getCowsInField() - numCowsBefore;
+                    if (currentDescoreMethod != 3) {
+                        msg = CommonUtils.playerList.get(currentPlayer - 1).getName()
+                                + " killed " + numCowsKilledAfter + " of " + CommonUtils.playerList.get(playerTakenFrom - 1).getName()
+                                + "'s cows.";
+
+                    }
+                    else {
+                        msg = CommonUtils.playerList.get(currentPlayer - 1).getName()
+                                + " took " + numCowsAfter + " of " + CommonUtils.playerList.get(playerTakenFrom - 1).getName()
+                                + "'s cows.";
+
+                    }
+
                     CommonUtils.setDescoreErrorMessage(msg);
                     startActivity(new Intent(DescoreScreen.this, ScoreScreen.class));
 
