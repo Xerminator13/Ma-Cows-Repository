@@ -13,10 +13,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class MainMenu extends AppCompatActivity {
     private Button player1, player2, player3, player4, player5, player6, back, endGameButton, allScoresButton, backButton1;
     private EditText name1, name2, name3, name4, name5, name6;
     private TextView appLabel, timerLabel;
+
+    private ArrayList<Button> playerButtonList = new ArrayList<Button>();
 
     private int switcher = 1;
 
@@ -61,6 +65,8 @@ public class MainMenu extends AppCompatActivity {
         backButton1 = findViewById(R.id.backButton1);
         endGameButton = findViewById(R.id.endGameButton);
         allScoresButton = findViewById(R.id.allScoresButton);
+        appLabel = findViewById(R.id.appLabelView);
+        timerLabel = findViewById(R.id.timerLabel);
 
         name1 = findViewById(R.id.player1NameInput);
         name2 = findViewById(R.id.player2NameInput);
@@ -76,16 +82,13 @@ public class MainMenu extends AppCompatActivity {
         player5 = findViewById(R.id.p5Button);
         player6 = findViewById(R.id.p6Button);
 
-    }
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
-        View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        playerButtonList.add(player1);
+        playerButtonList.add(player2);
+        playerButtonList.add(player3);
+        playerButtonList.add(player4);
+        playerButtonList.add(player5);
+        playerButtonList.add(player6);
+
     }
 
     //**********************************************************************************************
@@ -96,64 +99,28 @@ public class MainMenu extends AppCompatActivity {
         setContentView(R.layout.main_menu);
         Log.d("MainMenu", "onCreate: started!");
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(false);
-
-        //------------------------------------------------------------------------------------------
-
-        appLabel = findViewById(R.id.appLabelView);
-        timerLabel = findViewById(R.id.timerLabel);
-        timerLabel.setVisibility(View.INVISIBLE);
-
         //------------------------------------------------------------------------------------------
 
         initAllElements();
         populateTextEntries();
+        timerLabel.setVisibility(View.INVISIBLE);
 
         //------------------------------------------------------------------------------------------
 
-        player1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToScoreScreen(1);
+        for (int a = 0; a < 6; a++) {
+            int b = a + 1;
+            playerButtonList.get(a).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    goToScoreScreen(b);
+                    //For some reason it does not like using "a" because of the way it is defined,
+                    //  something to do with back scope.  Instead, I have to define and use "b"...
 
-            }
+                }
 
-        });
-        player2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToScoreScreen(2);
+            });
 
-            }
-
-        });
-        player3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToScoreScreen(3);
-
-            }
-
-        });
-        player4.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToScoreScreen(4);
-
-            }
-
-        });
-        player5.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToScoreScreen(5);
-
-            }
-
-        });
-        player6.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                goToScoreScreen(6);
-
-            }
-
-        });
+        }
 
         //------------------------------------------------------------------------------------------
 
@@ -193,6 +160,12 @@ public class MainMenu extends AppCompatActivity {
             }
 
         });
+
+    }
+    @Override
+    protected void onStop() {
+        setAllPlayerNames();
+        super.onStop();
 
     }
 

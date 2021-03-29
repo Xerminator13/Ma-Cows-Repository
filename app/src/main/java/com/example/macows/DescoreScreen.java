@@ -256,5 +256,11 @@ public class DescoreScreen extends AppCompatActivity {
         });
 
     }
+    @Override
+    protected void onStop() {
+        CommonUtils.setDescoreErrorMessage("No cows were killed.");
+        super.onStop();
+
+    }
 
 }
