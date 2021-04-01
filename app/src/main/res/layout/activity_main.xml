@@ -7,6 +7,18 @@
     android:background="#00BCD4"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/resetNames"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="16dp"
+        android:text="Erase Names"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/populatePlayers"
+        app:layout_constraintStart_toEndOf="@+id/resetScores" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="250dp"
@@ -21,36 +33,34 @@
 
     <Button
         android:id="@+id/resetScores"
-        android:layout_width="88dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="330dp"
-        android:text="Erase Data"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:text="Erase Scores"
+        app:layout_constraintBottom_toBottomOf="@+id/resetNames"
+        app:layout_constraintEnd_toStartOf="@+id/resetNames"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/mainMenuTrans"
         android:layout_width="153dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="512dp"
-        android:layout_marginBottom="115dp"
+        android:layout_marginBottom="100dp"
         android:text="Go to Main Menu"
-        app:layout_constraintBottom_toTopOf="@+id/populatePlayers"
+        app:layout_constraintBottom_toTopOf="@+id/resetNames"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/populatePlayers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:text="Populate"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/resetNames"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/resetNames" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

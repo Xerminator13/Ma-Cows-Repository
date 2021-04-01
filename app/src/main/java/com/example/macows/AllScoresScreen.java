@@ -78,7 +78,6 @@ public class AllScoresScreen extends AppCompatActivity {
         //==========================================================================================
 
         initAllElements();
-        CommonUtils.setAllPlayerVarsToPrefs(CommonUtils.playerList);
         populateAllElements();
 
         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

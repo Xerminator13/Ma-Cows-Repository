@@ -52,6 +52,11 @@ public class CommonUtils {
             editor.putInt("p" + a + "ZombiesGained", 0);
 
         }
+        for (int a = 1; a < 11; a++) {
+            editor.putString("p" + a + "LeaderboardName", "");
+            editor.putInt("p" + a + "LeaderboardScore", 0);
+
+        }
 
         editor.putInt("currentPlayer", 1);
         /*
@@ -162,9 +167,8 @@ public class CommonUtils {
         p.setNumZombieCowsGained(prefs.getInt("p" + a + "ZombiesGained", 0));
 
     }
-    public static void resetAllSavedData() {
+    public static void resetAllScores() {
         for (int a = 1; a < 7; a++) {
-            editor.putString("p" + a + "Name", "Player " + a);
             editor.putInt("p" + a + "InField", 0);
             editor.putInt("p" + a + "InBarn", 0);
             editor.putInt("p" + a + "Zombies", 0);
@@ -185,6 +189,15 @@ public class CommonUtils {
          */
         editor.putInt("descoreMethod", 1);
         editor.putString("descoreErrorMessage", "Descored...");
+
+        editor.commit();
+
+    }
+    public static void resetAllNames() {
+        for (int a = 1; a < 7; a++) {
+            editor.putString("p" + a + "Name", "");
+
+        }
 
         editor.commit();
 

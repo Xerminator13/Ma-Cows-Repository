@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private Button goToMainMenu, resetScores, populate;
+    private Button goToMainMenu, resetScores, resetNames, populate;
 
     private static Context mContext;
     private SharedPreferences prefs;
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         //------------------------------------------------------------------------------------------
 
         resetScores = findViewById(R.id.resetScores);
+        resetNames = findViewById(R.id.resetNames);
         goToMainMenu = findViewById(R.id.mainMenuTrans);
         populate = findViewById(R.id.populatePlayers);
 
@@ -117,13 +118,18 @@ public class MainActivity extends AppCompatActivity {
         resetScores.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Deletes all preferences and player objects
-                CommonUtils.resetAllSavedData();
-                CommonUtils.playerList.clear();
-                //Need to create new references and player objects
-                CommonUtils.initPlayers();
-                //Creates necessary prefs for one player
-                CommonUtils.updateAllPlayerPreferences(CommonUtils.playerList);
+                CommonUtils.resetAllScores();
+                CommonUtils.setAllPlayerVarsToPrefs(CommonUtils.playerList);
                 prefs.getBoolean("savedData", false);
+
+            }
+
+        });
+        resetNames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CommonUtils.resetAllNames();
+                CommonUtils.setAllPlayerVarsToPrefs(CommonUtils.playerList);
 
             }
 

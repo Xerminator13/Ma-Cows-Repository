@@ -39,23 +39,17 @@ public class MainMenu extends AppCompatActivity {
     * Gets text from EditText views and assigns it to the player names variables
      */
     private void setAllPlayerNames() {
-        String temp1 = name1.getText().toString();
-        String temp2 = name2.getText().toString();
-        String temp3 = name3.getText().toString();
-        String temp4 = name4.getText().toString();
-        String temp5 = name5.getText().toString();
-        String temp6 = name6.getText().toString();
+        CommonUtils.playerList.get(0).setPlayerName(name1.getText().toString());
+        CommonUtils.playerList.get(1).setPlayerName(name2.getText().toString());
+        CommonUtils.playerList.get(2).setPlayerName(name3.getText().toString());
+        CommonUtils.playerList.get(3).setPlayerName(name4.getText().toString());
+        CommonUtils.playerList.get(4).setPlayerName(name5.getText().toString());
+        CommonUtils.playerList.get(5).setPlayerName(name6.getText().toString());
 
-        CommonUtils.playerList.get(0).setPlayerName(temp1);
-        CommonUtils.playerList.get(1).setPlayerName(temp2);
-        CommonUtils.playerList.get(2).setPlayerName(temp3);
-        CommonUtils.playerList.get(3).setPlayerName(temp4);
-        CommonUtils.playerList.get(4).setPlayerName(temp5);
-        CommonUtils.playerList.get(5).setPlayerName(temp6);
+        CommonUtils.updateAllPlayerPreferences(CommonUtils.playerList);
 
     }
     private void goToScoreScreen(int player) {
-        setAllPlayerNames();
         CommonUtils.setCurrentPlayer(player);
         CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(player - 1), player - 1);
         startActivity(new Intent(MainMenu.this, ScoreScreen.class));
@@ -112,6 +106,7 @@ public class MainMenu extends AppCompatActivity {
             playerButtonList.get(a).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    setAllPlayerNames();
                     goToScoreScreen(b);
                     //For some reason it does not like using "a" because of the way it is defined,
                     //  something to do with back scope.  Instead, I have to define and use "b"...
@@ -148,6 +143,7 @@ public class MainMenu extends AppCompatActivity {
 
                 }
 
+                setAllPlayerNames();
                 startActivity(new Intent(MainMenu.this, EndGameScreen.class));
 
             }
@@ -155,6 +151,7 @@ public class MainMenu extends AppCompatActivity {
         });
         allScoresButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                setAllPlayerNames();
                 startActivity(new Intent(MainMenu.this, AllScoresScreen.class));
 
             }
@@ -164,7 +161,6 @@ public class MainMenu extends AppCompatActivity {
     }
     @Override
     protected void onStop() {
-        setAllPlayerNames();
         super.onStop();
 
     }
