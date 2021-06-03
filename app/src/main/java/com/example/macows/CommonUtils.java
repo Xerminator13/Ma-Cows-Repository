@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import java.util.ArrayList;
 
 public class CommonUtils {
-    private static Context mContext;
+    private Context mContext;
     private static SharedPreferences prefs;
     private static SharedPreferences.Editor editor;
     public static ArrayList<Player> playerList  = new ArrayList<Player>();
@@ -20,6 +20,7 @@ public class CommonUtils {
         mContext = context;
         prefs = mContext.getSharedPreferences("MyPrefs", 0);// 0 is for private mode
         editor = prefs.edit();
+        editor.commit();
 
     }
 
@@ -204,6 +205,8 @@ public class CommonUtils {
     }
 
     //Return Methods  ******************************************************************************
+
+    /*  Use this method when testing scoring methods to view values on the app
     public static String formatPlayerPrefs(int a) {
         String formattedString = "";
 
@@ -219,5 +222,6 @@ public class CommonUtils {
         return formattedString;
 
     }
+    */
 
 }

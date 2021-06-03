@@ -66,7 +66,7 @@ public class ScoreScreen extends AppCompatActivity {
             CommonUtils.playerList.get(currentPlayer - 1).sawSchool();
             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
             updateTextViews(currentPlayer);
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+            //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
 
         }
@@ -75,7 +75,7 @@ public class ScoreScreen extends AppCompatActivity {
             CommonUtils.playerList.get(currentPlayer - 1).sawRoadKill();
             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
             updateTextViews(currentPlayer);
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+            //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
         //Hospital
@@ -83,7 +83,7 @@ public class ScoreScreen extends AppCompatActivity {
             CommonUtils.playerList.get(currentPlayer - 1).sawHostpital();
             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
             updateTextViews(currentPlayer);
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+            //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
         //Church
@@ -91,7 +91,7 @@ public class ScoreScreen extends AppCompatActivity {
             CommonUtils.playerList.get(currentPlayer - 1).sawChurch();
             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
             updateTextViews(currentPlayer);
-            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+            //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
         }
         //Resurrect Zombie Cows
@@ -126,14 +126,14 @@ public class ScoreScreen extends AppCompatActivity {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
 
-                if (input1 != null && input1.length() > 0) {
+                if (input1.length() > 0) {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
                         CommonUtils.playerList.get(currentPlayer - 1).addCowsToField(input2);
                         CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                         updateTextViews(currentPlayer);
-                        errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+                        //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
                     }
                     else {
@@ -154,14 +154,14 @@ public class ScoreScreen extends AppCompatActivity {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
 
-                if (input1 != null && input1.length() > 0) {
+                if (input1.length() > 0) {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
                         if (CommonUtils.playerList.get(currentPlayer - 1).depositInBarn(input2)) {
                             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                             updateTextViews(currentPlayer);
-                            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+                            //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
                         }
                         else {
@@ -188,14 +188,14 @@ public class ScoreScreen extends AppCompatActivity {
             public void onClick(View v) {
                 String input1 = scoreEntry.getText().toString();
 
-                if (input1 != null && input1.length() > 0) {
+                if (input1.length() > 0) {
                     int input2 = Integer.parseInt(input1);
 
                     if (input2 > 0) {
                         if (CommonUtils.playerList.get(currentPlayer - 1).withdrawFromBarn(input2)) {
                             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                             updateTextViews(currentPlayer);
-                            errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
+                            //errorLabel.setText(CommonUtils.formatPlayerPrefs(currentPlayer));
 
                         }
                         else {
