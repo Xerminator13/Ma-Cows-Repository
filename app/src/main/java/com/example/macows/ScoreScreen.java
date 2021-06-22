@@ -1,4 +1,4 @@
-package com.example.macows;
+ package com.example.macows;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,6 +58,7 @@ public class ScoreScreen extends AppCompatActivity {
         numZombieCows.setText("Your Zombie Cows:  " + CommonUtils.playerList.get(currentPlayer - 1).getZombieCows());
 
         errorLabel.setText(CommonUtils.getDescoreErrorMessage());
+        scoreEntry.setText("");
 
     }
     private void runScoringMethods(int a) {
