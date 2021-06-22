@@ -53,13 +53,33 @@ public class CommonUtils {
             editor.putInt("p" + a + "ZombiesGained", 0);
 
         }
+
+        /* This will be for the leaderboard and when scores are saved after every match
         for (int a = 1; a < 11; a++) {
             editor.putString("p" + a + "LeaderboardName", "");
             editor.putInt("p" + a + "LeaderboardScore", 0);
 
         }
+        */
 
         editor.putInt("currentPlayer", 1);
+        editor.putInt("currentScore", 0);
+        /*
+         * 0 = Add to field
+         * 1 = Put in barn
+         * 2 = Take from barn
+         * 3 = School
+         * 4 = Road kill
+         * 5 = Hospital
+         * 6 = Church
+         * 7 = Cemetery
+         * 8 = Fast food
+         * 9 = Police
+         * 10 = Stock trailer
+         * 11 = Funeral home
+         * 12 = Resurrect zombie cows
+         */
+        editor.putInt("actionFlag", 0);
         /*
         * 1 = Cemetery
         * 2 = Fast Food
@@ -74,8 +94,36 @@ public class CommonUtils {
 
     }
 
+    //Setters --------------------------------------------------------------------------------------
+
     public static void setCurrentPlayer(int player) {
         editor.putInt("currentPlayer", player);
+        editor.commit();
+
+    }
+    //This is used for the undo button
+    public static void setCurrentScore(int score) {
+        editor.putInt("currentScore", score);
+        editor.commit();
+
+    }
+    /**
+     * 0 = Add to field;
+     * 1 = Put in barn;
+     * 2 = Take from barn;
+     * 3 = School;
+     * 4 = Road kill;
+     * 5 = Hospital;
+     * 6 = Church;
+     * 7 = Cemetery;
+     * 8 = Fast food;
+     * 9 = Police;
+     * 10 = Stock trailer;
+     * 11 = Funeral home;
+     * 12 = Resurrect zombie cows.
+     */
+    public static void setActionFlag(int action) {
+        editor.putInt("actionFlag", action);
         editor.commit();
 
     }
@@ -89,6 +137,23 @@ public class CommonUtils {
         editor.commit();
 
     }
+
+    //Getters --------------------------------------------------------------------------------------
+
+    //This is used for the undo button
+    public static int getCurrentScore() {
+        return prefs.getInt("currentScore", 0);
+
+    }
+    public static int getActionFlag() {
+        return prefs.getInt("actionFlag", 0);
+
+    }
+    /**
+     * Players are numbered 1-6, not 1-5.
+     * This is important to note when looking at looping algorithms using the current player value
+     * @return current player between 1 (inclusive) and 6 (inclusive)
+     */
     public static int getCurrentPlayer() {
         return prefs.getInt("currentPlayer", 1);
 

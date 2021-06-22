@@ -282,6 +282,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="4dp"
         android:text="Hospital"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/roadKillButton"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -290,7 +291,7 @@
         android:id="@+id/divider"
         android:layout_width="1dp"
         android:layout_height="729dp"
-        android:layout_marginEnd="250dp"
+        android:layout_marginEnd="225dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -298,12 +299,69 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="59dp"
+        android:id="@+id/switchPlayerButton5"
+        android:layout_width="0dp"
         android:layout_height="51dp"
-        android:text="Button"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="#009688"
+        android:text="Player 1"
+        android:textSize="11.5sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/addToField"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPlayerButton4" />
+
+    <Button
+        android:id="@+id/switchPlayerButton2"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#009688"
+        android:text="Player 1"
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toStartOf="@+id/addToField"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPlayerButton1" />
+
+    <Button
+        android:id="@+id/switchPlayerButton3"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#009688"
+        android:text="Player 1"
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toStartOf="@+id/addToField"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPlayerButton2" />
+
+    <Button
+        android:id="@+id/switchPlayerButton4"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="60dp"
+        android:backgroundTint="#009688"
+        android:text="Player 1"
+        android:textSize="11.5sp"
+        app:layout_constraintEnd_toStartOf="@+id/addToField"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPlayerButton3" />
+
+    <Button
+        android:id="@+id/switchPlayerButton1"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#009688"
+        android:text="Player 1"
+        android:textSize="11.5sp"
         app:layout_constraintEnd_toStartOf="@+id/addToField"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="67dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

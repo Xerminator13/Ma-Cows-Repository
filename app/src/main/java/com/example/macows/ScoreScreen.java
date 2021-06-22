@@ -14,8 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ScoreScreen extends AppCompatActivity {
     private Button addToField, addToBarn, takeFromBarn, roadKill, resurrectZombieCows, church, police, cemetery, fastFood, stockTrailer, funeralHome, hospital, school, back;
+    private Button switchPlayerButton1, switchPlayerButton2, switchPlayerButton3, switchPlayerButton4, switchPlayerButton5;
+    private Button undoActionButton;
     private EditText scoreEntry;
     private TextView playerNameLabel, numCowsInField, numCowsInBarn, numZombieCows, errorLabel;
+
+    private int[] players = new int[5];
 
     private int currentPlayer = CommonUtils.getCurrentPlayer();
 
@@ -48,6 +52,12 @@ public class ScoreScreen extends AppCompatActivity {
         resurrectZombieCows = findViewById(R.id.resurrectZombieCows);
         back = findViewById(R.id.scoreScreenToMainMenu);
 
+        switchPlayerButton1 = findViewById(R.id.switchPlayerButton1);
+        switchPlayerButton2 = findViewById(R.id.switchPlayerButton2);
+        switchPlayerButton3 = findViewById(R.id.switchPlayerButton3);
+        switchPlayerButton4 = findViewById(R.id.switchPlayerButton4);
+        switchPlayerButton5 = findViewById(R.id.switchPlayerButton5);
+
     }
     private void updateTextViews(int a) {
         int b = a - 1;
@@ -59,6 +69,26 @@ public class ScoreScreen extends AppCompatActivity {
 
         errorLabel.setText(CommonUtils.getDescoreErrorMessage());
         scoreEntry.setText("");
+
+    }
+    private void updateSwitchPlayerButtons() {
+        //Of note, the players[] list is populated with integers between 0-5 (inclusive), NOT 1-6 (inclusive).
+        //This is so it is easier to use with the .get() method for the later block of .setText() methods.
+        int b = 0;
+        for (int a = 0; a < 6; a++) {
+            if (a != currentPlayer - 1) {
+                players[b] = a;
+                b++;
+
+            }
+
+        }
+
+        switchPlayerButton1.setText(CommonUtils.playerList.get(players[0]).getName());
+        switchPlayerButton2.setText(CommonUtils.playerList.get(players[1]).getName());
+        switchPlayerButton3.setText(CommonUtils.playerList.get(players[2]).getName());
+        switchPlayerButton4.setText(CommonUtils.playerList.get(players[3]).getName());
+        switchPlayerButton5.setText(CommonUtils.playerList.get(players[4]).getName());
 
     }
     private void runScoringMethods(int a) {
@@ -97,7 +127,7 @@ public class ScoreScreen extends AppCompatActivity {
         }
         //Resurrect Zombie Cows
         else if (a == 10) {
-            String error = CommonUtils.playerList.get(currentPlayer - 1).resurrectZombieCows();
+            String error = CommonUtils.playerList.get(currentPlayer - 1).resurrectZombieCows(scoreEntry.getText().toString());
             CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
             updateTextViews(currentPlayer);
             errorLabel.setText(error);
@@ -120,6 +150,8 @@ public class ScoreScreen extends AppCompatActivity {
 
         initAllElements();
         updateTextViews(currentPlayer);
+        updateSwitchPlayerButtons();
+
 
         //------------------------------------------------------------------------------------------
 
@@ -313,6 +345,57 @@ public class ScoreScreen extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(ScoreScreen.this, MainMenu.class));
+
+            }
+
+        });
+
+        switchPlayerButton1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                currentPlayer = players[0] + 1;
+
+                updateTextViews(currentPlayer);
+                updateSwitchPlayerButtons();
+
+            }
+
+        });
+        switchPlayerButton2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                currentPlayer = players[1] + 1;
+
+                updateTextViews(currentPlayer);
+                updateSwitchPlayerButtons();
+
+            }
+
+        });
+        switchPlayerButton3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                currentPlayer = players[2] + 1;
+
+                updateTextViews(currentPlayer);
+                updateSwitchPlayerButtons();
+
+            }
+
+        });
+        switchPlayerButton4.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                currentPlayer = players[3] + 1;
+
+                updateTextViews(currentPlayer);
+                updateSwitchPlayerButtons();
+
+            }
+
+        });
+        switchPlayerButton5.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                currentPlayer = players[4] + 1;
+
+                updateTextViews(currentPlayer);
+                updateSwitchPlayerButtons();
 
             }
 

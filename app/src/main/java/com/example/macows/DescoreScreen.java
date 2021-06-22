@@ -108,6 +108,8 @@ public class DescoreScreen extends AppCompatActivity {
         populateDescoreLabelText();
 
         //Buttons;  Extra code for naming the buttons with player names
+        //Of note, the players[] list is populated with integers between 0-5 (inclusive), NOT 1-6 (inclusive).
+        //This is so it is easier to use with the .get() method for the later block of .setText() methods.
         int b = 0;
         for (int a = 0; a < 6; a++) {
             if (a != currentPlayer - 1) {
