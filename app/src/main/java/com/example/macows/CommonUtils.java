@@ -62,8 +62,6 @@ public class CommonUtils {
         }
         */
 
-        editor.putInt("currentPlayer", 1);
-        editor.putInt("currentScore", 0);
         /*
          * 0 = Add to field
          * 1 = Put in barn
@@ -79,7 +77,14 @@ public class CommonUtils {
          * 11 = Funeral home
          * 12 = Resurrect zombie cows
          */
-        editor.putInt("actionFlag", 0);
+        editor.putInt("actionFlag", -1);
+        editor.putInt("currentScore", 0);
+        //These are used to represent player objects in a list.
+        //These preferences are intended to only hold integers between 1-6 (inclusive of both).
+        editor.putInt("player1Affected", 1);
+        editor.putInt("player2Affected", 2);
+        editor.putInt("currentPlayer", 1);
+
         /*
         * 1 = Cemetery
         * 2 = Fast Food
@@ -98,6 +103,16 @@ public class CommonUtils {
 
     public static void setCurrentPlayer(int player) {
         editor.putInt("currentPlayer", player);
+        editor.commit();
+
+    }
+    public static void setPlayer1Affected(int player) {
+        editor.putInt("player1Affected", player);
+        editor.commit();
+
+    }
+    public static void setPlayer2Affected(int player) {
+        editor.putInt("player2Affected", player);
         editor.commit();
 
     }
@@ -140,11 +155,39 @@ public class CommonUtils {
 
     //Getters --------------------------------------------------------------------------------------
 
-    //This is used for the undo button
+    public static int getPlayer1Affected() {
+        return prefs.getInt("player1Affected", 1);
+
+    }
+    public static int getPlayer2Affected() {
+        return prefs.getInt("player2Affected", 2);
+
+    }
+    /**
+     * See return:
+     * @return The last numerical value of cows that was affected by an action;
+     * Used as part of the undo framework
+     */
     public static int getCurrentScore() {
         return prefs.getInt("currentScore", 0);
 
     }
+    /**
+     * 0 = Add to field;
+     * 1 = Put in barn;
+     * 2 = Take from barn;
+     * 3 = School;
+     * 4 = Road kill;
+     * 5 = Hospital;
+     * 6 = Church;
+     * 7 = Cemetery;
+     * 8 = Fast food;
+     * 9 = Police;
+     * 10 = Stock trailer;
+     * 11 = Funeral home;
+     * 12 = Resurrect zombie cows.
+     * @return The last action as an integer:  See the key above for the numbers this will return.
+     */
     public static int getActionFlag() {
         return prefs.getInt("actionFlag", 0);
 

@@ -97,19 +97,13 @@ public class Player {
 
     }
 
-    //Additive / Subtractive Methods
-    public void addCowsToField(int numCows) {
-        this.cowsInField += numCows;
-        this.numCowsGained += numCows;
-
-        if (this.cowsInField < 0) {
-            this.cowsInField = 0;
-
-        }
-
-    }
+    //Additive and Subtractive Methods
     public void addZombieCows(int numZombieCows) {
         this.zombieCows += numZombieCows;
+
+    }
+    public void takeZombieCows(int numCows) {
+        this.zombieCows -= numCows;
 
     }
     public void addNumCowsKilled(int numCows) {
@@ -131,6 +125,17 @@ public class Player {
 
     //Scoring methods ------------------------------------------------------------------------------
 
+    public void addCowsToField(int numCows) {
+        CommonUtils.setCurrentScore(numCows);
+        CommonUtils.setActionFlag(0);
+        this.cowsInField += numCows;
+        this.numCowsGained += numCows;
+
+    }
+
+    /**
+     * Doubles the number of cows in the field
+     */
     public void sawChurch() {
         CommonUtils.setCurrentScore(this.cowsInField);
         CommonUtils.setActionFlag(6);
@@ -138,24 +143,30 @@ public class Player {
         this.cowsInField *= 2;
 
     }
+    /**
+     * Takes the current number of cows in the field and multiples it by 1.5
+     */
     public void sawHostpital() {
         CommonUtils.setCurrentScore(this.cowsInField);
         CommonUtils.setActionFlag(5);
-        this.numCowsGained = (int)(this.cowsInField*1.5) - this.cowsInField;
-        this.cowsInField = (int)(cowsInField*1.5);
+        this.numCowsGained = (int) (this.cowsInField*1.5) - this.cowsInField;
+        this.cowsInField = (int) (cowsInField*1.5);
 
     }
-    //Random percentage of current cows in field is added to the cows in the field as additional cows
+    /**
+     * Takes the current cows in the field and multiplies it by 1.XX, where XX is a random double
+     */
     public void sawSchool() {
         CommonUtils.setCurrentScore(this.cowsInField);
         CommonUtils.setActionFlag(3);
         double percentage = Math.random();
-        this.cowsInField =(int)(this.cowsInField*(1 + percentage));
+        this.cowsInField = (int) (this.cowsInField*(1 + percentage));
 
     }
 
     /**
-     * Checks for you if the player has any cows in their barn or field
+     * The function to convert zombie cows to cows in the field
+     * This function additionally checks if the player has any cows in their barn or field
      */
     public String resurrectZombieCows(String input) {
         if (input.equals("13")) {
@@ -194,6 +205,10 @@ public class Player {
         }
 
     }
+
+    /**
+     * Adds 25 to a player's zombie cow score
+     */
     public void sawRoadKill() {
         CommonUtils.setCurrentScore(this.zombieCows);
         CommonUtils.setActionFlag(4);
@@ -242,14 +257,23 @@ public class Player {
 
     /**
      * This will only steal 75% of a players cows up to 20 cows.
-     * I need to work on the undo functions for this type of descoring, but not this late at night.
+     * This method is unique to other descoring methods because it takes an integer as an input instead of a player object
+     * This is to help with the undo framework.
+     * @param player2 as an integer between 1-6 (inclusive of both).
      */
-    public void sawPolice(Player other) {
-        int numCows = (int)(other.getCowsInField()*0.75);
+    public void sawPolice(int player2) {
+        Player other = CommonUtils.playerList.get(player2 - 1);
+
+        int numCows = (int) (other.getCowsInField()*0.75);
+
         if (numCows > 20) {
             numCows = 20;
 
         }
+
+        CommonUtils.setCurrentScore(numCows);
+        CommonUtils.setPlayer2Affected(player2);
+        CommonUtils.setActionFlag(9);
 
         this.cowsInField += numCows;
         this.numCowsGained += numCows;
@@ -257,6 +281,11 @@ public class Player {
         other.addNumCowsLost(numCows);
 
     }
+
+    /**
+     * Sets the number of cows in the other player's field to 0
+     * @param other player object
+     */
     public void sawCemetery(Player other) {
         int numBeingTaken = other.getCowsInField();
 
@@ -269,9 +298,14 @@ public class Player {
         other.setCowsInField(0);
 
     }
+
+    /**
+     * Removes 2 cows from the field of the other player
+     * @param other player object
+     */
     public void sawFastFood(Player other) {
         if (other.cowsInField > 0) {
-            CommonUtils.setCurrentScore(other.cowsInField);
+            CommonUtils.setCurrentScore(2);
             CommonUtils.setActionFlag(8);
 
             other.addNumCowsLost(2);
@@ -281,9 +315,14 @@ public class Player {
         }
 
     }
+
+    /**
+     * Removes 10 cows form the field of the other player
+     * @param other player object
+     */
     public void sawStockTrailer(Player other) {
         if (other.cowsInField > 0) {
-            CommonUtils.setCurrentScore(other.cowsInField);
+            CommonUtils.setCurrentScore(10);
             CommonUtils.setActionFlag(10);
 
             other.addNumCowsLost(10);
@@ -294,6 +333,11 @@ public class Player {
         }
 
     }
+
+    /**
+     * Removes half of the cows from the other player's field
+     * @param other player object
+     */
     public void sawFuneralHome(Player other) {
         if (other.cowsInField > 0) {
             int numBeingTaken = (int)(other.getCowsInField()/2.0);

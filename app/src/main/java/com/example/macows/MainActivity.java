@@ -103,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
         populate.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 for (int a = 0; a < CommonUtils.playerList.size(); a++) {
-                    CommonUtils.playerList.get(a).setCowsInField((int)(Math.random()*19109));
-                    CommonUtils.playerList.get(a).setCowsInBarn((int)(Math.random()*767400));
+                    CommonUtils.playerList.get(a).setCowsInField(1000000);
+                    CommonUtils.playerList.get(a).setCowsInBarn(1000000);
                     CommonUtils.playerList.get(a).setZombieCows(25);
-                    CommonUtils.playerList.get(a).setNumCowsLost((int)(Math.random()*87864));
+                    CommonUtils.playerList.get(a).setNumCowsLost(1000000);
 
                 }
 

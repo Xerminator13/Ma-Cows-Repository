@@ -136,7 +136,13 @@ public class DescoreScreen extends AppCompatActivity {
         }
 
     }
-    private boolean descorePlayer(int player) { //player == playerTakenFrom > represents index of player + 1
+
+    /**
+     * Handles all descoring logic
+     * @param player as an integer between 1-6 (inclusive of both)
+     * @return true if a player was successfully descored, false if a player was not selected
+     */
+    private boolean descorePlayer(int player) { //player == playerTakenFrom
         int a = player - 1;
 
         if (player == -1) {
@@ -161,7 +167,7 @@ public class DescoreScreen extends AppCompatActivity {
             }
             else if (currentDescoreMethod == 3) {
                 //Police
-                CommonUtils.playerList.get(currentPlayer - 1).sawPolice(CommonUtils.playerList.get(a));
+                CommonUtils.playerList.get(currentPlayer - 1).sawPolice(player);
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(currentPlayer - 1), currentPlayer - 1);
                 CommonUtils.updatePlayerPrefs(CommonUtils.playerList.get(a), a);
 
